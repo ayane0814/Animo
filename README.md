@@ -1,4 +1,4 @@
-# <!--あにも-->
+# あにも
 ​
 ## サイト概要
 ### サイトテーマ
@@ -42,3 +42,6 @@
 ​
 ## 使用素材
 後ほど記載
+
+## 実装機能リストURL
+https://docs.google.com/spreadsheets/d/1ohvHaf6DwvVoK40qeEkrfdw1Lf2_rZwi7-c-ZIf9a4E/edit?usp=drive_link
