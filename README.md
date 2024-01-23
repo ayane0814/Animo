@@ -32,6 +32,8 @@
 ## 設計書
 <!--テーマを設定・提出する時点では不要です-->
 後ほど作成予定
+### 実装機能リストURL
+https://docs.google.com/spreadsheets/d/1ohvHaf6DwvVoK40qeEkrfdw1Lf2_rZwi7-c-ZIf9a4E/edit?usp=drive_link
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -42,6 +44,3 @@
 ​
 ## 使用素材
 後ほど記載
-
-## 実装機能リストURL
-https://docs.google.com/spreadsheets/d/1ohvHaf6DwvVoK40qeEkrfdw1Lf2_rZwi7-c-ZIf9a4E/edit?usp=drive_link
