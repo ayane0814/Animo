@@ -1,0 +1,2 @@
+class LaughedButton < ApplicationRecord
+end

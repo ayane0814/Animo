@@ -1,0 +1,2 @@
+module Public::LaughedButtonsHelper
+end
