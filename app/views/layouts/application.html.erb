@@ -6,11 +6,64 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <nav>
+        <div>
+          <a></a>
+          <button>
+            <span></span>
+          </button>
+          <div>
+            <ul>
+              <% if admin_signed_in? %>
+              <li>
+                <%= link_to "投稿一覧", admin_root_path %>
+              </li>
+              <li>
+                <%= link_to "会員一覧", admin_users_path %>
+              </li>
+              <li>
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+              </li>
+              <% elsif user_signed_in? %>
+              <!--ここに通知-->
+              <li>
+                <%= link_to "マイページ", show_user_path %>
+              </li>
+              <li>
+                <%= link_to "投稿一覧", posts_path %>
+              </li>
+              <li>
+                <%= link_to "新規投稿", new_post_path %>
+              </li>
+             <!--ここにマップ-->
+              <li>
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              </li>
+              <% else %>
+              <li>
+                <%= link_to "About", about_path %>
+              </li>
+              <li>
+                <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %>
+              </li>
+              <li>
+                <%= link_to "新規登録", new_user_registration_path %>
+              </li>
+              <li>
+                <%= link_to "ログイン", new_user_session_path %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
