@@ -1,0 +1,7 @@
+<h1>投稿詳細</h1>
+<h2>画像</h2>
+<%= image_tag @post.get_image(200,200) %>
+<h2>タイトル</h2>
+<p><%= @post.posted_title %></p>
+<h2>本文</h2>
+<p><%= @post.post_content %></p>
