@@ -11,13 +11,12 @@ class Public::PostsController < ApplicationController
         if @post.save
             redirect_to post_path(@post)
         else
-            flash[:notice] = "画像を選択してください"
             render :new
         end
     end
     
     def index
-        @post = Post.all
+        @posts = Post.all
     end
     
     def show
@@ -25,12 +24,22 @@ class Public::PostsController < ApplicationController
     end
     
     def edit
+        @post = Post.find(params[:id])
     end
     
     def update
+        @post = Post.find(params[:id])
+        if @post.update(post_params)
+            redirect_to post_path(@post)
+        else
+            render :edit
+        end
     end
     
     def destroy
+        post = Post.find(params[:id])
+        post.destroy
+        redirect_to posts_path
     end
     
     def draft

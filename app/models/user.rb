@@ -3,6 +3,12 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :laughed_buttons, dependent: :destroy
+  has_many :followers, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   GUEST_USER_EMAIL = "guest@user.com"
   
