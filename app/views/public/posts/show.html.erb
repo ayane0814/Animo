@@ -6,7 +6,7 @@
 <h2>本文</h2>
 <p><%= @post.post_content %></p>
 <div id="laughed_buttons_<%= @post.id %>">
-    <%= render "laughed_buttons/laughed.html.erb", post: @post %>
+    <%= render "public/laughed_buttons/laughed", post: @post %>
 </div>
 <%= link_to "編集", edit_post_path(@post) %>
 <%= link_to "削除", posts_path, method: :delete, "data-confirm" => "本当に投稿を削除しますか？" %>

@@ -34,8 +34,10 @@ Rails.application.routes.draw do
       collection do
         get "draft"
       end
+      
+      resource :laughed_buttons, only: [:create, :destroy]
     end
-    resources :laughed_buttons, only: [:index, :create, :destroy]
+    resources :laughed_buttons, only: [:index]
     resources :follows, only: [:index, :create, :destroy]
     resources :comments, only: [:create, :destroy]
   end

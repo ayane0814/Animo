@@ -1,1 +1,1 @@
-$("#laughed_buttons_<%= @post.id %>").html("<%= j(render 'laughed_buttons/laughed.html.erb', post: @post) %>");
+$("#laughed_buttons_<%= @post.id %>").html("<%= j(render 'public/laughed_buttons/laughed', post: @post) %>");
