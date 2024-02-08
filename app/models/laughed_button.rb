@@ -1,5 +1,5 @@
 class LaughedButton < ApplicationRecord
-    # belongs_to :notification
+    # has_many :notifications, dependent: :destroy
     belongs_to :post
     belongs_to :user
     

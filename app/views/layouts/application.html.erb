@@ -30,6 +30,10 @@
               <li>
                 <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
               </li>
+              <li>
+                <%= form_with url: "", method: :get do |f| %>
+                <% end %>
+              </li>
               <% elsif user_signed_in? %>
               <!--ここに通知-->
               <li>

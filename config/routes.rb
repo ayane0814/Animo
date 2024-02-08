@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :posts, only: [:show, :destroy]
     resources :comments, only: [:destroy]
     resources :users, only: [:index, :show, :edit, :update]
+    get "search" => "searches#search"
   end
   
   scope module: :public do
@@ -26,6 +27,9 @@ Rails.application.routes.draw do
     get "/information/edit", to: "users#edit", as: "edit_user"
     patch "/information", to: "users#update", as: "user"
     resources :users, except: [:new, :create, :index, :show, :edit, :update, :destroy] do
+      member do
+        get "laughed_posts"
+      end
       collection do
         patch "withdraw"
       end
@@ -37,9 +41,9 @@ Rails.application.routes.draw do
       
       resource :laughed_buttons, only: [:create, :destroy]
     end
-    resources :laughed_buttons, only: [:index]
     resources :follows, only: [:index, :create, :destroy]
     resources :comments, only: [:create, :destroy]
+    get '/search' => "search#search"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

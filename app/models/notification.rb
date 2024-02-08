@@ -1,6 +1,7 @@
 class Notification < ApplicationRecord
-    has_many :posts, dependent: :destroy
-    has_many :comments, dependent: :destroy
-    has_many :laughed_buttons, dependent: :destroy
+    belongs_to :post
+    belongs_to :comment
+    belongs_to :laughed_button
+    belongs_to :follower
     belongs_to :user
 end
