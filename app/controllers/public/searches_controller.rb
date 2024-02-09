@@ -1,4 +1,4 @@
-class Admin::SearchController < ApplicationController
+class Public::SearchesController < ApplicationController
   def search
     @model = params[:model]
     @content = params[:content]
@@ -7,7 +7,7 @@ class Admin::SearchController < ApplicationController
     if @model == "user"
       @redords = User.search_for(@content, @method)
     else
-      @records = Posts.search_for(@content, @method)
+      @records = Post.search_for(@content, @method)
     end
   end
 end

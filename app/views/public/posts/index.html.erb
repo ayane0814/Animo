@@ -1,11 +1,2 @@
 <h1>投稿一覧</h1>
-<% @posts.each do |post| %>
-    <h2>画像</h2>
-    <%= link_to(post_path(post)) do %>
-        <%= image_tag post.get_image(200,200) %>
-    <% end %>
-    <h2>タイトル</h2>
-    <p><%= post.posted_title %></p>
-    <h2>本文</h2>
-    <p><%= post.post_content %></p>
-<% end %>
+    <%= render "index", posts: @posts %>
