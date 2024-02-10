@@ -18,5 +18,7 @@
     <p>投稿内容</p>
     <%= f.text_area :post_content %>
     
+    <%= render "form", tag_name: @tag_name %>
+    
     <%= f.submit "保存" %>
 <% end %>

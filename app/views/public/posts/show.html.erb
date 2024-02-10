@@ -1,4 +1,6 @@
 <h1>投稿詳細</h1>
+<h2>タグ</h2>
+<%= render "post", post:@post %>
 <h2>画像</h2>
 <%= image_tag @post.get_image(200,200) %>
 <h2>タイトル</h2>

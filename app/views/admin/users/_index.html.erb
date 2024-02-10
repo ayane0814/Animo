@@ -1,11 +1,11 @@
 <table>
     <tr>
-        <td></td>
+        <td>会員ID</td>
         <td>名前</td>
     </tr>
     <% users.each do |user| %>
         <tr>
-            <td></td>
+            <td><%= user.id %></td>
             <td><%= user.name %></td>
         </tr>
     <% end %>

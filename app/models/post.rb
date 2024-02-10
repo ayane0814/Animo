@@ -4,10 +4,11 @@ class Post < ApplicationRecord
     has_many :laughed_buttons, dependent: :destroy
     has_many :post_tags, dependent: :destroy
     has_many :notifications, dependent: :destroy
+    has_many :tags, through: :post_tags
     belongs_to :user
     validates :image, presence: true
     validates :posted_title, presence: true
-    validates :post_content, presence: true
+    validates :post_content, presence: true, length: { in: 1..140 }
     
     def get_image(width, height)
         image.variant(resize_to_limit: [width, height]).processed

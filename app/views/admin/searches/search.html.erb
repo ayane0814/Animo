@@ -1,2 +1,7 @@
-<h1>Admin::Searches#search</h1>
-<p>Find me in app/views/admin/searches/search.html.erb</p>
+<% if @model == "user" %>
+    <h3>Users search for "<%= @content %>"</h3>
+    <%= render "admin/users/index", users: @records %>
+<% else %>
+    <h3>Posts search for "<%= @content %>"</h3>
+    <%= render "public/posts/index", posts: @records %>
+<% end %>
