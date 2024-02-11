@@ -1,0 +1,6 @@
+<h1>投稿詳細</h1>
+<h2>タグ</h2>
+<%= render "public/posts/post", post: @post %>
+<%= render "public/posts/show", post: @post %>
+
+<%= link_to "削除", admin_post_path(@post), method: :delete, "data-confirm" => "本当に投稿を削除しますか？" %>
