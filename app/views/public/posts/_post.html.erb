@@ -1,6 +1,6 @@
 <p>
     <strongl>Tag:</strongl>
     <% post.tags.each do |tag| %>
-        <%= tag.name %>　
+        <%= link_to tag.name, tagsearch_path(content: tag) %>　
     <% end %>
 </p>

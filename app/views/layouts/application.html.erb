@@ -38,6 +38,12 @@
                   <%= f.submit "検索" %>
                 <% end %>
               </li>
+              <li>
+                <%= form_with url: tagsearch_path, method: :get, locl: true do |f| %>
+                  <%= f.text_field :contetnt %>
+                  <%= f.submit "タグ検索" %>
+                <%  end%>
+              </li>
               <% elsif user_signed_in? %>
               <!--ここに通知-->
               <li>
@@ -60,6 +66,12 @@
                   <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}) %>
                   <%= f.submit "検索" %>
                 <% end %>
+              </li>
+              <li>
+                <%= form_with url: tagsearch_path, method: :get, locl: true do |f| %>
+                  <%= f.text_field :contetnt %>
+                  <%= f.submit "タグ検索" %>
+                <%  end%>
               </li>
               <% else %>
               <li>

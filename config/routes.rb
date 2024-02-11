@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'tagserches/search'
+  end
+  get 'admin/Tagserches'
+  get 'admin/search'
   devise_for :admin, skip: [:registrations, :passwords], controllers: {
     sessions: "admin/sessions"
   }
@@ -18,6 +23,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:destroy]
     resources :users, only: [:index, :show, :edit, :update]
     get "search" => "searches#search"
+    get "tagsearch" => "tagsearches#search"
   end
   
   scope module: :public do
@@ -43,7 +49,8 @@ Rails.application.routes.draw do
     end
     resources :follows, only: [:index, :create, :destroy]
     resources :comments, only: [:create, :destroy]
-    get '/search' => "searches#search"
+    get 'search' => "searches#search"
+    get "tagsearch" => "tagsearches#search"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
