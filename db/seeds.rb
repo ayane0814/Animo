@@ -11,6 +11,14 @@ Admin.create!(email: "admin@test.com", password: "111111")
 user1 = User.create!(name: "太郎", email: "tarou@test.com", password: "111111")
 user2 = User.create!(name: "花子", email: "hanako@test.com", password: "111111")
 user3 = User.create!(name: "碧", email: "aoi@test.com", password: "111111")
+user4 = User.create!(name: "あかり", email: "akari@test.com", password: "111111")
+user5 = User.create!(name: "小島", email: "kojima@test.com", password: "111111")
+user6 = User.create!(name: "みむ", email: "mimu@test.com", password: "111111")
+user7 = User.create!(name: "ちと", email: "chito@test.com", password: "111111")
+user8 = User.create!(name: "明夫", email: "akio@test.com", password: "111111")
+user9 = User.create!(name: "キララ", email: "kirara@test.com", password: "111111")
+user10 = User.create!(name: "ルーナ", email: "ruuna@test.com", password: "111111")
+user11 = User.create!(name: "ゼロ", email: "zero@test.com", password: "111111")
 
 post1 = Post.new(
     user: user1,
@@ -38,3 +46,66 @@ post3 = Post.new(
     )
 post3.image.attach(io: File.open(Rails.root.join('app/assets/images/birds.jpg')), filename: 'birds.jpg')
 post3.save!
+
+post4 = Post.new(
+    user: user4,
+    posted_title: "猫ちゃんびっくり",
+    post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
+    tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")]
+    )
+post4.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
+post4.save!
+
+post5 = Post.new(
+    user: user5,
+    posted_title: "猫ちゃんびっくり",
+    post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
+    tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")]
+    )
+post5.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
+post5.save!
+
+post6 = Post.new(
+    user: user6,
+    posted_title: "猫ちゃんびっくり",
+    post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
+    tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")]
+    )
+post6.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
+post6.save!
+
+post7 = Post.new(
+    user: user7,
+    posted_title: "猫ちゃんびっくり",
+    post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
+    tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")]
+    )
+post7.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
+post7.save!
+
+post8 = Post.new(
+    user: user8,
+    posted_title: "猫ちゃんびっくり",
+    post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
+    tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")]
+    )
+post8.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
+post8.save!
+
+post9 = Post.new(
+    user: user9,
+    posted_title: "猫ちゃんびっくり",
+    post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
+    tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")]
+    )
+post9.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
+post9.save!
+
+post10 = Post.new(
+    user: user10,
+    posted_title: "猫ちゃんびっくり",
+    post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
+    tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")]
+    )
+post10.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
+post10.save!
