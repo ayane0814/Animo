@@ -39,11 +39,10 @@ Rails.application.routes.draw do
       collection do
         get "draft"
       end
-      
+      resources :comments, only: [:create, :destroy]
       resource :laughed_buttons, only: [:create, :destroy]
     end
     resources :follows, only: [:index, :create, :destroy]
-    resources :comments, only: [:create, :destroy]
     get 'search' => "searches#search"
     get "tagsearch" => "tagsearches#search"
   end

@@ -2,6 +2,10 @@ class Public::UsersController < ApplicationController
     before_action :authenticate_user!
     before_action :ensure_guest_user, only: [:edit]
     
+    def show
+        @user = User.find(current_user.id)
+    end
+    
     def laughed_posts
         @laughed_posts = Post.laughed_posts(current_user)
     end

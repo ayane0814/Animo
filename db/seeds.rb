@@ -8,17 +8,17 @@
 
 Admin.create!(email: "admin@test.com", password: "111111")
 
-user1 = User.create!(name: "太郎", email: "tarou@test.com", password: "111111")
-user2 = User.create!(name: "花子", email: "hanako@test.com", password: "111111")
-user3 = User.create!(name: "碧", email: "aoi@test.com", password: "111111")
-user4 = User.create!(name: "あかり", email: "akari@test.com", password: "111111")
-user5 = User.create!(name: "小島", email: "kojima@test.com", password: "111111")
-user6 = User.create!(name: "みむ", email: "mimu@test.com", password: "111111")
-user7 = User.create!(name: "ちと", email: "chito@test.com", password: "111111")
-user8 = User.create!(name: "明夫", email: "akio@test.com", password: "111111")
-user9 = User.create!(name: "キララ", email: "kirara@test.com", password: "111111")
-user10 = User.create!(name: "ルーナ", email: "ruuna@test.com", password: "111111")
-user11 = User.create!(name: "ゼロ", email: "zero@test.com", password: "111111")
+user1 = User.create!(name: "tarou", email: "tarou@test.com", password: "111111")
+user2 = User.create!(name: "hanako", email: "hanako@test.com", password: "111111")
+user3 = User.create!(name: "aoi", email: "aoi@test.com", password: "111111")
+user4 = User.create!(name: "akari", email: "akari@test.com", password: "111111")
+user5 = User.create!(name: "kojima", email: "kojima@test.com", password: "111111")
+user6 = User.create!(name: "mimu", email: "mimu@test.com", password: "111111")
+user7 = User.create!(name: "chito", email: "chito@test.com", password: "111111")
+user8 = User.create!(name: "akio", email: "akio@test.com", password: "111111")
+user9 = User.create!(name: "kirara", email: "kirara@test.com", password: "111111")
+user10 = User.create!(name: "ruuna", email: "ruuna@test.com", password: "111111")
+user11 = User.create!(name: "zero", email: "zero@test.com", password: "111111")
 
 post1 = Post.new(
     user: user1,

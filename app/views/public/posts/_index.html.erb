@@ -7,4 +7,7 @@
     <p><%= post.posted_title %></p>
     <h2>本文</h2>
     <p><%= post.post_content %></p>
+    <div id="comment_counter">
+        <%= render "public/comments/counter", post: post %>
+    </div>
 <% end %>
