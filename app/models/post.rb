@@ -18,10 +18,11 @@ class Post < ApplicationRecord
         laughed_buttons.exists?(user_id: user.id)
     end
     
-    def self.laughed_posts(user)
+    def self.laughed_posts(user, page)
         includes(:laughed_buttons)
             where(laughed_buttons: {user_id: user.id})
             order(created_at: :desc)
+            page(page)
     end
     
     def self.search_for(content, method)

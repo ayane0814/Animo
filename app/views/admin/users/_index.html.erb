@@ -2,11 +2,15 @@
     <tr>
         <td>会員ID</td>
         <td>名前</td>
+        <td>メールアドレス</td>
+        <td>ステータス</td>
     </tr>
     <% users.each do |user| %>
         <tr>
             <td><%= user.id %></td>
             <td><%= link_to user.name, admin_user_path(user) %></td>
+            <td><%= user.email %></td>
+            <td><%= user.status_label %></td>
         </tr>
     <% end %>
 </table>

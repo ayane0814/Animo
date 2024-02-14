@@ -4,3 +4,12 @@
 <%= render "public/posts/show", post: @post %>
 
 <%= link_to "削除", admin_post_path(@post), method: :delete, "data-confirm" => "本当に投稿を削除しますか？" %>
+<h2>コメント一覧</h2>
+<div id="comment_counter">
+    <%= render "public/comments/counter", post: @post %>
+</div>
+<div id="comment_destroy">
+    <%= render "admin/comments/index", post: @post %>
+</div>
+
+<!--コメント非同期化できない-->

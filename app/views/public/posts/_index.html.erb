@@ -1,4 +1,4 @@
-<% posts.each do |post|%>
+<% posts.each do |post| %>
     <h2>画像</h2>
     <%= link_to(post_path(post)) do %>
         <%= image_tag post.get_image(200,200) %>

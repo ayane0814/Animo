@@ -1,0 +1,26 @@
+<h1>会員詳細</h1>
+<table>
+    <tr>
+        <td>会員ID</td>
+        <td><%= @user.id %></td>
+    </tr>
+    
+    <tr>
+        <td>氏名</td>
+        <td><%= @user.name %></td>
+    </tr>
+    
+    <tr>
+        <td>メールアドレス</td>
+        <td><%= @user.email %></td>
+    </tr>
+    
+    <tr>
+        <td>会員ステータス</td>
+        <td><%= @user.status_label %></td>
+    </tr>
+</table>
+
+<%= link_to "編集する", edit_admin_user_path(@user) %>
+
+<h2>投稿一覧</h2>

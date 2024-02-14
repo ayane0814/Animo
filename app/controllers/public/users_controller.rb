@@ -7,7 +7,7 @@ class Public::UsersController < ApplicationController
     end
     
     def laughed_posts
-        @laughed_posts = Post.laughed_posts(current_user)
+        @laughed_posts = Post.laughed_posts(current_user, params[:page])
     end
     
     private

@@ -19,6 +19,11 @@ class User < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
+  
+  def status_label
+    status_class = is_active? ? "text-success" : "text-secondary"
+    "<span class='#{status_class}'>#{is_active? ? '有効' : '退会'}</span>".html_safe
+  end
 
   GUEST_USER_EMAIL = "guest@user.com"
   
