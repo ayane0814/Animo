@@ -4,5 +4,5 @@
         <%= comment.user.name %>
     <% end %>
     <%= comment.comment_content %>
-    <%= link_to "削除", admin_comment_path(post, comment), method: :delete, "data-confirm" => "本当に削除しますか？", remote: true %>
+    <%= link_to "削除", admin_comment_path(comment), method: :delete, "data-confirm" => "本当に削除しますか？", remote: true %>
 <% end %>

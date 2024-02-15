@@ -1,7 +1,8 @@
 class Notification < ApplicationRecord
-    belongs_to :post
-    belongs_to :comment
-    belongs_to :laughed_button
-    belongs_to :follower
-    belongs_to :user
+    default_scope -> { order(created_at: :desc) }
+    belongs_to :post, optional: true
+    belongs_to :comment, optional: true
+    
+    belongs_to :recipient_user, class_name: 'User', foreign_key: 'recipient_user_id', optional: true
+    belongs_to :sender_user, class_name: 'User', foreign_key: 'sender_user_id', optional: true
 end

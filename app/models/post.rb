@@ -20,9 +20,9 @@ class Post < ApplicationRecord
     
     def self.laughed_posts(user, page)
         includes(:laughed_buttons)
-            where(laughed_buttons: {user_id: user.id})
-            order(created_at: :desc)
-            page(page)
+            .where(laughed_buttons: {user_id: user.id})
+            .order(created_at: :desc)
+            .page(page)
     end
     
     def self.search_for(content, method)
@@ -35,5 +35,10 @@ class Post < ApplicationRecord
         else
             Post.where("posted_title LIKE ?", "%" + content + "%")
         end
+    end
+    
+    def create_notification_laughed!(current_user)
+        temp = Notification.where(["recipient_user_id = ? and sender_user_id = ? and post_id = ? and notification_type = ?", current_user.id, user_id, id, 'laughed'])
+        
     end
 end

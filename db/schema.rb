@@ -77,15 +77,17 @@ ActiveRecord::Schema.define(version: 2024_02_12_100636) do
   create_table "notifications", force: :cascade do |t|
     t.integer "recipient_user_id", null: false
     t.integer "sender_user_id", null: false
-    t.integer "post_id", null: false
-    t.integer "comment_id", null: false
-    t.integer "laughed_buttons_id", null: false
-    t.string "notification_detail", null: false
+    t.integer "post_id"
+    t.integer "comment_id"
     t.boolean "is_read", default: false, null: false
-    t.string "notification_type", null: false
+    t.string "notification_type", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "follower_id", null: false
+    t.index ["comment_id"], name: "index_notifications_on_comment_id"
+    t.index ["post_id"], name: "index_notifications_on_post_id"
+    t.index ["recipient_user_id"], name: "index_notifications_on_recipient_user_id"
+    t.index ["sender_user_id"], name: "index_notifications_on_sender_user_id"
   end
 
   create_table "post_tags", force: :cascade do |t|
@@ -126,7 +128,6 @@ ActiveRecord::Schema.define(version: 2024_02_12_100636) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
