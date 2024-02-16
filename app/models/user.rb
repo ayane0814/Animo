@@ -50,4 +50,23 @@ class User < ApplicationRecord
       User.where("name LIKE ?", "%" + content + "%")
     end
   end
+  
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["recipient_user_id = ? and sender_user_id = ? and notification_type = ?", current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        sender_user_id: id,
+        notification_type: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
+  
+  def to_param
+    name
+  end
+  
+  validates :name,
+    format: { with: /\A[a-z0-9_-]+\Z/ },
+    length: { minimum: 3, maximum: 25}
 end

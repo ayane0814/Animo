@@ -39,6 +39,37 @@ class Post < ApplicationRecord
     
     def create_notification_laughed!(current_user)
         temp = Notification.where(["recipient_user_id = ? and sender_user_id = ? and post_id = ? and notification_type = ?", current_user.id, user_id, id, 'laughed'])
-        
+        if temp.blank?
+            notification = current_user.active_notifications.new(
+                post_id: id,
+                sender_user_id: user_id,
+                notification_type: 'laughed'
+            )
+            if notification.recipient_user_id == notification.sender_user_id
+                notification.checked = true
+            end
+            notification.save if notification.valid?
+        end
+    end
+    
+    def create_notification_comment!(current_user, comment_id)
+        temp_ids = Comment.select(:user_id).where(post_id: id).where.not(user_id: current_user.id).distinct
+        temp_ids.each do |temp_id|
+            save_notification_comment!(current_user, comment_id, temp_id['user_id'])
+        end
+        save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank?
+    end
+    
+    def save_notification_comment!(current_user, comment_id, sender_user_id)
+        notification = current_user.active_notification.new(
+            post_id: id,
+            comment_id: comment_id,
+            sender_user_id: sender_user_id,
+            notification_type: 'comment'
+        )
+        if notification.recipient_user_id == notification.sender_user_id
+            notification.checked = true
+        end
+        notification.save if notification.valid?
     end
 end

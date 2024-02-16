@@ -1,13 +1,11 @@
 class Public::LaughedButtonsController < ApplicationController
     before_action :authenticate_user!
     
-    def index
-    end
-    
     def create
         @post = Post.find(params[:post_id])
-        laughed = @post.laughed_buttons.new(user_id: current_user.id)
-        laughed.save
+        @laughed = @post.laughed_buttons.new(user_id: current_user.id)
+        @laughed.save
+        @post.create_notification_laughed!(current_user)
     end
     
     def destroy

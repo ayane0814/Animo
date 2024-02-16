@@ -3,7 +3,7 @@
         <% post.comments.each do |comment| %>
         <tr>
             <td>
-                <%= link_to show_user_path do %>
+                <%= link_to user_path(comment.user) do %>
                     <%= image_tag comment.user.get_profile_image(50,50) %><br>
                     <%= comment.user.name %>
                 <% end %>

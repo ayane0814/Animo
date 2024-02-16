@@ -24,10 +24,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "/about" => "homes#about"
-    get "/my_page", to: "users#show", as: "show_user"
-    get "/information/edit", to: "users#edit", as: "edit_user"
-    patch "/information", to: "users#update", as: "user"
-    resources :users, except: [:new, :create, :index, :show, :edit, :update, :destroy] do
+    resources :users, param: :name, only: [:show, :edit, :update] do
       member do
         get "laughed_posts"
       end
@@ -43,6 +40,7 @@ Rails.application.routes.draw do
       resource :laughed_buttons, only: [:create, :destroy]
     end
     resources :follows, only: [:index, :create, :destroy]
+    resources :notifications, only: :index
     get 'search' => "searches#search"
     get "tagsearch" => "tagsearches#search"
   end
