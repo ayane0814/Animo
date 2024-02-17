@@ -6,6 +6,7 @@ class Public::LaughedButtonsController < ApplicationController
         @laughed = @post.laughed_buttons.new(user_id: current_user.id)
         @laughed.save
         @post.create_notification_laughed!(current_user)
+        # 上の一行のせいで非同期化
     end
     
     def destroy

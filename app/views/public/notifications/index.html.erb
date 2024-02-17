@@ -3,7 +3,7 @@
 <% if notifications.exists? %>
     <% notifications.each do |notification| %>
         <div class="notification">
-            <%= render "notification" %>
+            <%= render "notification", notification: notification %>
         </div>
     <% end %>
     

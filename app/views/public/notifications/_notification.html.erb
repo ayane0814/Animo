@@ -1,7 +1,46 @@
+<% recipient = notification.recipient_user_id %>
+<% sender = notification.sender_user_id %>
+
 <div class="col-md-6 mx-auto">
     <div class="form_inline">
         <span>
-            <%= link_to  %>
+            <%= link_to user_path(recipient) do %>
+                <%= image_tag recipient.get_profile_image(10,10) %>
+                <strong>
+                    <%= recipient.name %>
+                </strong>
+            <% end %>
+            さんが
+            
+            <% case notification.notification_type %>
+            <% when 'follow' then %>
+                あなたをフォローしました
+            <% when 'like' then %>
+                <%= link_to 'あなたの投稿', notification.post, style: "font-weight: bold;" %>
+                にいいねしました
+            <% when 'comment' then %>
+                <% if notification.post.user_id == sender.id %>
+                    <%= link_to "あなたの投稿", notification.post, style: "font-wight: bold;" %>
+                <% else %>
+                    <span>
+                        <%= link_to post_path((notification.post) do %>
+                            <%= image_tag notification.post.user.get_ptofile_image(10,10) %>
+                            <strong>
+                                <%= notification.post.user.name %>さんの投稿
+                            </strong>
+                        <% end %>
+                    </span>
+                <% end %>
+                にコメントしました
+                <p class="text-muted mb-0">
+                    <%= Comment.find_by(id: notification.comment_id)&.comment %>
+                </p>
+            <% end %>
         </span>
     </div>
+    
+    <div class="small text-muted text-right">
+        <%= time_ago_in_words(notification.created_at).upcase %>
+    </div>
+    <hr>
 </div>
