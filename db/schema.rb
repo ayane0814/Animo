@@ -83,7 +83,6 @@ ActiveRecord::Schema.define(version: 2024_02_12_100636) do
     t.string "notification_type", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "follower_id", null: false
     t.index ["comment_id"], name: "index_notifications_on_comment_id"
     t.index ["post_id"], name: "index_notifications_on_post_id"
     t.index ["recipient_user_id"], name: "index_notifications_on_recipient_user_id"

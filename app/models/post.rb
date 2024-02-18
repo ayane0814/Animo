@@ -46,7 +46,7 @@ class Post < ApplicationRecord
                 notification_type: 'laughed'
             )
             if notification.recipient_user_id == notification.sender_user_id
-                notification.checked = true
+                notification.is_read = true
             end
             notification.save if notification.valid?
         end
@@ -61,14 +61,14 @@ class Post < ApplicationRecord
     end
     
     def save_notification_comment!(current_user, comment_id, sender_user_id)
-        notification = current_user.active_notification.new(
+        notification = current_user.active_notifications.new(
             post_id: id,
             comment_id: comment_id,
             sender_user_id: sender_user_id,
             notification_type: 'comment'
         )
         if notification.recipient_user_id == notification.sender_user_id
-            notification.checked = true
+            notification.is_read = true
         end
         notification.save if notification.valid?
     end
