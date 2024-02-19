@@ -39,7 +39,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resource :laughed_buttons, only: [:create, :destroy]
     end
-    resources :follows, only: [:index, :create, :destroy]
+    resources :follows, only: [:index, :show, :create, :destroy]
     resources :notifications, only: :index
     get 'search' => "searches#search"
     get "tagsearch" => "tagsearches#search"

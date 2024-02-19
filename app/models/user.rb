@@ -69,4 +69,16 @@ class User < ApplicationRecord
   validates :name,
     format: { with: /\A[a-z0-9_-]+\Z/ },
     length: { minimum: 3, maximum: 25}
+    
+  def following?(current_user, follow_id)
+    Follower.find_by(user_id: follow_id, follow_id: current_user.id)
+  end
+  
+  def followed(user)
+    Follower.where(follow_id: user.id)
+  end
+  
+  def follower(current_user)
+    Follower.where(user_id: current_user.id)
+  end
 end

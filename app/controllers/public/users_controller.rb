@@ -5,6 +5,7 @@ class Public::UsersController < ApplicationController
     
     def show
         @user = User.find_by(name: params[:name])
+        # フォロー機能のルーティングをidじゃなくnameにしたほうがいい
     end
     
     def edit
