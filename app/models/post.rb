@@ -10,6 +10,8 @@ class Post < ApplicationRecord
     validates :posted_title, presence: true
     validates :post_content, presence: true, length: { in: 1..140 }
     
+    enum is_display: { published: 0, draft: 1, unpublished: 2 }
+    
     def get_image(width, height)
         image.variant(resize_to_limit: [width, height]).processed
     end

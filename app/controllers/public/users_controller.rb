@@ -5,7 +5,6 @@ class Public::UsersController < ApplicationController
     
     def show
         @user = User.find_by(name: params[:name])
-        # フォロー機能のルーティングをidじゃなくnameにしたほうがいい
     end
     
     def edit
@@ -20,6 +19,12 @@ class Public::UsersController < ApplicationController
         else
             render :edit
         end
+    end
+    
+    def follows_show
+        @user = User.find_by(name: params[:name])
+        @follows = @user.followed(@user)
+        @followers = @user.follower(@user)
     end
     
     def laughed_posts

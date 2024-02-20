@@ -9,6 +9,12 @@ class Public::PostsController < ApplicationController
         @post = Post.new(post_params)
         @post.user_id = current_user.id
         
+        if params[:draft].present?
+            @post.status = :draft
+        else
+            @post.status = :published
+        end
+        
         tag_names = params[:tag_name].split(",")
         tags = tag_names.map { |tag_name| Tag.find_or_initialize_by(name: tag_name) }
         tags.each do |tag|
@@ -21,7 +27,11 @@ class Public::PostsController < ApplicationController
         
         @post.tags = tags
         if @post.save
-            redirect_to post_path(@post)
+            if @post.draft?
+                redirect_to draft_posts_path, notice: "下書きが保存されました。"
+            else
+                redirect_to post_path(@post), notice: "投稿が公開されました。"
+            end
         else
             @tag_name = params[:tag_name]
             render :new
@@ -39,11 +49,29 @@ class Public::PostsController < ApplicationController
     
     def edit
         @post = Post.find(params[:id])
+        @post.user_id = current_user.id
+        
         @tag_name = @post.tags.pluck(:name).join(",")
     end
     
     def update
         @post = Post.find(params[:id])
+        @post.user_id = current_user.id
+        
+        if params[:draft].present?
+            @post.is_display = :draft
+            notice_message = "下書きを保存しました。"
+            redirect_path = draft_posts_path
+        elsif params[:unpublished].present?
+            @post.is_display = :unpublished
+            notice_message = "非公開にしました。"
+            redirect_path = draft_posts_path
+        else
+            @post.is_display = :published
+            notice_message = "投稿を更新しました。"
+            redirect_path = post_path(@post)
+        end
+        
         tag_names = params[:tag_name].split(",")
         tags = tag_names.map { |tag_name| Tag.find_or_create_by(name: tag_name) }
         tags.each do |tag|
