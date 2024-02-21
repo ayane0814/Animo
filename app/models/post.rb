@@ -12,6 +12,10 @@ class Post < ApplicationRecord
     
     enum is_display: { published: 0, draft: 1, unpublished: 2 }
     
+    scope :published, -> { where(is_display: "published") }
+    scope :draft, -> { where(is_display: "draft") }
+    scope :unpublished, -> { where(is_display: "unpublished") }
+    
     def get_image(width, height)
         image.variant(resize_to_limit: [width, height]).processed
     end

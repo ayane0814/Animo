@@ -10,9 +10,9 @@ class Public::PostsController < ApplicationController
         @post.user_id = current_user.id
         
         if params[:draft].present?
-            @post.status = :draft
+            @post.is_display = :draft
         else
-            @post.status = :published
+            @post.is_display = :published
         end
         
         tag_names = params[:tag_name].split(",")
@@ -21,7 +21,7 @@ class Public::PostsController < ApplicationController
             if tag.invalid?
                 @tag_name = params[:tag_name]
                 @post.errors.add(:tags, tag.errors.full_messages.join("\n"))
-                return render :new, status: :unprocessable_entity
+                return render :new, is_display: :unprocessable_entity
             end
         end
         
@@ -39,7 +39,9 @@ class Public::PostsController < ApplicationController
     end
     
     def index
-        @posts = Post.all
+        @published_posts = Post.published.order(created_at: :desc).page(params[:page])
+        @draft_posts = current_user.posts.draft.order(created_at: :desc).page(params[:page])
+        @unpublished_posts = current_user.posts.unpublished.order(created_at: :desc).page(params[:page])
     end
     
     def show
