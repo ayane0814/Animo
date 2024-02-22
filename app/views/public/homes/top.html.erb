@@ -1,1 +1,34 @@
-ユーザートップ
+<div>
+    <h4>あにも</h4>
+    <p>
+        おかえりなさい、ここは皆さんに笑顔を届ける<br>
+        コミュニティサイト「あにも」です。<br>
+        動物の写真・動画を投稿でき、位置情報も載せられる<br>
+        ので、どこで動物に会えるのかがわかります。<br>
+        皆さんの笑顔を守れますように！
+    </p>
+</div>
+
+<div>
+    <h1>今日の笑顔の守護者</h1>
+    
+</div>
+
+<div>
+    
+</div>
+
+<div>
+    <h3>新規投稿</h3>
+    <% @posts.each do |post| %>
+        <%= link_to(post_path(post)) do %>
+            <%= image_tag post.get_image(50,50) %>
+            <%= post.posted_title %>
+            <%= post.post_content %>
+        <% end %>
+    <% end %>
+</div>
+
+<div>
+    <%= link_to "投稿をもっと見る>>", posts_path %>
+</div>
