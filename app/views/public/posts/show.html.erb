@@ -14,3 +14,7 @@
     <%= render "public/comments/index", post: @post %>
 </div>
 <%= render "public/comments/form", post: @post, comment: @comment %>
+
+<p>
+    <span><i class="fa-solid fa-location-dot"></i> <%= @post.address %></span>
+</p>

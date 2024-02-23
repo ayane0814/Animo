@@ -18,7 +18,15 @@
     <p>投稿内容</p>
     <%= f.text_area :post_content %>
     
+    <p>郵便番号</p>
+    <%= text_field_tag :zipcode, nil %>
+    
+    <p>住所</p>
+    <%= f.text_field :address %>
+    
     <%= render "form", tag_name: @tag_name %>
     
     <%= render "display", post: @post, f: f %>
 <% end %>
+
+<%= javascript_pack_tag "jpostal", 'data-turbolinks-track': 'reload' %>

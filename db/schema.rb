@@ -104,9 +104,9 @@ ActiveRecord::Schema.define(version: 2024_02_12_100636) do
     t.string "posted_title", null: false
     t.text "post_content", null: false
     t.boolean "is_display", default: false, null: false
-    t.string "address"
-    t.float "latitude"
-    t.float "longitude"
+    t.string "address", default: ""
+    t.float "latitude", default: 0.0, null: false
+    t.float "longitude", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
