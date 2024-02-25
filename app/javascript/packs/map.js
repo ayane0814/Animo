@@ -12,7 +12,18 @@ async function initMap() {
     zoom: 15,
     mapTypeControl: false
   });
+  
+  const response = await fetch("/post.json").then((res) => res.json()).catch(error => console.error(error))
+  if (response.ok) {
+    const items = response.data.items
+    items.forEach((item) => {
+      const marker = new google.maps.Marker({
+        position: new google.maps.LatLng(item.latitude, item.longitude),
+        map,
+        title: item.posted_title,
+      });
+    });
+  }
 }
 
 initMap()
-// なぜかマップが読み込まれない

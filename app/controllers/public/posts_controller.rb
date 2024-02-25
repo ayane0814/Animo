@@ -39,6 +39,15 @@ class Public::PostsController < ApplicationController
     end
     
     def index
+        respond_to do |format|
+            format.html do
+                @posts = Post.page(params[:page])
+            end
+            format.json do
+                @posts = Post.all
+            end
+        end
+        
         @published_posts = Post.published.order(created_at: :desc).page(params[:page])
         @draft_posts = current_user.posts.draft.order(created_at: :desc).page(params[:page])
         @unpublished_posts = current_user.posts.unpublished.order(created_at: :desc).page(params[:page])
