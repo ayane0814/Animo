@@ -35,7 +35,7 @@ post2 = Post.new(
     posted_title: "わんこドリル",
     post_content: "うちの子のかわいい姿を撮ろうとしたら…ｗタイミングいいのか悪いのか、すごい写真が撮れちゃいました！",
     tags: [Tag.find_or_create_by(name: "犬"), Tag.find_or_create_by(name: "下手くそ写真"), Tag.find_or_create_by(name: "チワワ")],
-    address: "東京都千代田区丸の内１丁目"
+    address: "愛知県名古屋市中村区名駅１丁目１−４"
     )
 post2.image.attach(io: File.open(Rails.root.join('app/assets/images/tdog.jpg')), filename: 'tdog.jpg')
 post2.save!
@@ -45,77 +45,8 @@ post3 = Post.new(
     posted_title: "二匹の鳩を撮ろうとしたら...",
     post_content: "仲良しな二匹の鳩を撮っていたのですが、写真を確認したら…。鳩がひょっこり顔だしていたんですｗ最初見たとき見てはいけないものを見てしまったかと思い、うわぁあ！と声が出てしまいましたｗ",
     tags: [Tag.find_or_create_by(name: "鳩"), Tag.find_or_create_by(name: "ホラー"), Tag.find_or_create_by(name: "ひょっこり")],
-    address: "東京都千代田区丸の内１丁目"
+    address: "大阪府大阪市淀川区西中島5-16-1"
     )
 post3.image.attach(io: File.open(Rails.root.join('app/assets/images/birds.jpg')), filename: 'birds.jpg')
 post3.save!
 
-post4 = Post.new(
-    user: user4,
-    posted_title: "猫ちゃんびっくり",
-    post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
-    tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")],
-    address: "東京都千代田区丸の内１丁目"
-    )
-post4.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
-post4.save!
-
-post5 = Post.new(
-    user: user5,
-    posted_title: "猫ちゃんびっくり",
-    post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
-    tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")],
-    address: "東京都千代田区丸の内１丁目"
-    )
-post5.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
-post5.save!
-
-post6 = Post.new(
-    user: user6,
-    posted_title: "猫ちゃんびっくり",
-    post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
-    tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")],
-    address: "東京都千代田区丸の内１丁目"
-    )
-post6.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
-post6.save!
-
-post7 = Post.new(
-    user: user7,
-    posted_title: "猫ちゃんびっくり",
-    post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
-    tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")],
-    address: "東京都千代田区丸の内１丁目"
-    )
-post7.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
-post7.save!
-
-post8 = Post.new(
-    user: user8,
-    posted_title: "猫ちゃんびっくり",
-    post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
-    tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")],
-    address: "東京都千代田区丸の内１丁目"
-    )
-post8.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
-post8.save!
-
-post9 = Post.new(
-    user: user9,
-    posted_title: "猫ちゃんびっくり",
-    post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
-    tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")],
-    address: "東京都千代田区丸の内１丁目"
-    )
-post9.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
-post9.save!
-
-post10 = Post.new(
-    user: user10,
-    posted_title: "猫ちゃんびっくり",
-    post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
-    tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")],
-    address: "東京都千代田区丸の内１丁目"
-    )
-post10.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
-post10.save!

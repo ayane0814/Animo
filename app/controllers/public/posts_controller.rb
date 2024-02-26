@@ -47,7 +47,6 @@ class Public::PostsController < ApplicationController
                 @posts = Post.all
             end
         end
-        
         @published_posts = Post.published.order(created_at: :desc).page(params[:page])
         @draft_posts = current_user.posts.draft.order(created_at: :desc).page(params[:page])
         @unpublished_posts = current_user.posts.unpublished.order(created_at: :desc).page(params[:page])

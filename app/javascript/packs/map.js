@@ -13,8 +13,9 @@ async function initMap() {
     mapTypeControl: false
   });
   
-  const response = await fetch("/post.json").then((res) => res.json()).catch(error => console.error(error))
-  if (response.ok) {
+  const response = await fetch("/posts.json").then((res) => res.json()).catch(error => console.error(error))
+  console.log(response.status)
+  // if (response.status == 200) {
     const items = response.data.items
     items.forEach((item) => {
       const marker = new google.maps.Marker({
@@ -24,6 +25,6 @@ async function initMap() {
       });
     });
   }
-}
+// }
 
-initMap()
+initMap();
