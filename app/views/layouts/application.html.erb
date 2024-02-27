@@ -10,106 +10,127 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   
-  <body>
-    <header>
-      <nav>
-        <div>
-          <a></a>
-          <button>
-            <span></span>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand p-3" href="/"><%= image_tag('logo.png')%></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
           </button>
-          <div>
-            <ul>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
               <% if admin_signed_in? %>
-              <li>
-                <%= link_to "投稿一覧", admin_root_path %>
+              <li class="nav-item">
+                <%= link_to "投稿一覧", admin_root_path, class: 'nav-link text-dark' %>
               </li>
-              <li>
-                <%= link_to "会員一覧", admin_users_path %>
+              <li class="nav-item">
+                <%= link_to "会員一覧", admin_users_path, class: 'nav-link text-dark' %>
               </li>
-              <li>
-                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
               </li>
-              <li>
-                <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
-                  <%= f.text_field :content %>
-                  <%= f.select :model, options_for_select({"User" => "user", "Post" => "post"}) %>
-                  <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}) %>
-                  <%= f.submit "検索" %>
-                <% end %>
-              </li>
-              <li>
-                <%= form_with url: tagsearch_path, method: :get, loacl: true do |f| %>
-                  <%= f.text_field :content %>
-                  <%= f.submit "タグ検索" %>
-                <%  end%>
-              </li>
+              
               <% elsif user_signed_in? %>
-              <li>
+              <li class="nav-item">
                   <!--オレンジ〇表示-->
                   <%= link_to notifications_path do %>
                     <% if unchecked_notifications.any? %>
-                        <span class="fa-stack">
+                        <span class="fa-stack" style="position: relative;">
                             <i class="fa-regular fa-envelope fa-stack-2x" style="color: #2b5fda;"></i>
-                            <i class="fa-solid fa-circle n-circle fa-stack-1x" style="color: #fa9200;"></i>
+                            <i class="fa-solid fa-circle n-circle fa-stack-1x" style="color: #fa9200; position: absolute; left: 13px; top: 8px;"></i>
                         </span>
                     <% else %>
-                        <i class="fa-regular fa-envelope" style="color: #2b5fda;"></i>
+                        <i class="fa-regular fa-envelope fa-2x nav-link" style="color: #2b5fda;"></i>
                     <% end %>
                   <% end %>
               </li>
-              <li>
-                <%= link_to "マイページ", user_path(current_user) %>
+              <li class="nav-item">
+                <%= link_to "マイページ", user_path(current_user), class: 'nav-link text-dark' %>
               </li>
-              <li>
-                <%= link_to "会員一覧", follows_path %>
+              <li class="nav-item">
+                <%= link_to "会員一覧", follows_path, class: 'nav-link text-dark' %>
               </li>
-              <li>
-                <%= link_to "投稿一覧", posts_path %>
+              <li class="nav-item">
+                <%= link_to "投稿一覧", posts_path, class: 'nav-link text-dark' %>
               </li>
-              <li>
-                <%= link_to "新規投稿", new_post_path %>
+              <li class="nav-item">
+                <%= link_to "新規投稿", new_post_path, class: 'nav-link text-dark' %>
               </li>
-              <li>
-                <%= link_to "マップ", map_path %>
+              <li class="nav-item">
+                <%= link_to "マップ", map_path, class: 'nav-link text-dark' %>
               </li>
-              <li>
-                <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+              <li class="nav-item">
+                <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
               </li>
-              <li>
-                <%= form_with url: search_path, local: true, method: :get do |f| %>
-                  <%= f.text_field :content %>
-                  <%= f.select :model, options_for_select({"User" => "user", "Post" => "post"}) %>
-                  <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}) %>
-                  <%= f.submit "検索" %>
-                <% end %>
-              </li>
-              <li>
-                <%= form_with url: tagsearch_path, method: :get, loacl: true do |f| %>
-                  <%= f.text_field :content %>
-                  <%= f.submit "タグ検索" %>
-                <%  end%>
-              </li>
+              
               <% else %>
-              <li>
-                <%= link_to "About", about_path %>
+              <li class="nav-item">
+                <%= link_to "About", about_path, class: 'nav-link text-dark' %>
               </li>
-              <li>
-                <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %>
+              <li class="nav-item">
+                <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: 'nav-link text-dark' %>
               </li>
-              <li>
-                <%= link_to "新規登録", new_user_registration_path %>
+              <li class="nav-item">
+                <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
               </li>
-              <li>
-                <%= link_to "ログイン", new_user_session_path %>
+              <li class="nav-item">
+                <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
               </li>
               <% end %>
             </ul>
           </div>
         </div>
       </nav>
+      <nav class="navbar navbar-expand-lg navbar-light">
+      <ul class="navbar-nav ml-auto">
+        <% if admin_signed_in? %>
+        <li class="nav-item mr-2">
+          <%= form_with url: admin_search_path, local: true, method: :get do |f| %>
+            <%= f.text_field :content %>
+            <%= f.select :model, options_for_select({"User" => "user", "Post" => "post"}) %>
+            <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}) %>
+            <%= f.submit "検索" %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= form_with url: tagsearch_path, method: :get, loacl: true do |f| %>
+            <%= f.text_field :content %>
+            <%= f.submit "タグ検索" %>
+          <% end %>
+        </li>
+        <% elsif user_signed_in? %>
+        <li class="nav-item mr-4">
+          <%= form_with url: search_path, local: true, method: :get do |f| %>
+            <%= f.text_field :content %>
+            <%= f.select :model, options_for_select({"User" => "user", "Post" => "post"}) %>
+            <%= f.select :method, options_for_select({"完全一致" => "perfect", "前方一致" => "forward", "後方一致" => "backward", "部分一致" => "partial"}) %>
+            <%= f.submit "検索" %>
+          <% end %>
+        </li>
+        <li class="nav-item">
+          <%= form_with url: tagsearch_path, method: :get, loacl: true do |f| %>
+            <%= f.text_field :content %>
+            <%= f.submit "タグ検索" %>
+          <% end %>
+        </li>
+        <% else %>
+        <% end %>
+      </ul>
+    </nav>
     </header>
-    <%= flash[:notice] %>
-    <%= yield %>
+    <main class="mb-auto">
+      <%= flash[:notice] %>
+      <%= yield %>
+    </main>
+    <footer class="bg-dark text-white pt-5 pb-4">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-4 text-center">
+            <p>© 2024 あにも</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
