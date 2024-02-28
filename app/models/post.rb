@@ -5,6 +5,7 @@ class Post < ApplicationRecord
     has_many :post_tags, dependent: :destroy
     has_many :notifications, dependent: :destroy
     has_many :tags, through: :post_tags
+    has_many :todays_favorites, -> { where(created_at: Time.zone.today.all_day) }
     belongs_to :user
     validates :image, presence: true
     validates :posted_title, presence: true
