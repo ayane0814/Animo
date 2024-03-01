@@ -1,5 +1,64 @@
-<%= @user.name %>のページ
+<h2><%= @user.name %>のページ</h2>
 
+<h5>会員情報</h5>
+<table>
+    <tr>
+        <td>アイコン</td>
+        <td><%= image_tag @user.get_profile_image(50,50), class: "rounded-circle", width: "50", height: "50" %></td>
+    </tr>
+    <tr>
+        <td>名前</td>
+        <td><%= @user.name %></td>
+    </tr>
+    <tr>
+        <td><%= link_to "編集する", edit_user_path(@user) %></td>
+    </tr>
+</table>
 <%= link_to "面白い一覧", laughed_posts_user_path(@user) %>
 
 <%= link_to "フォロー・フォロワー一覧", follows_show_user_path(@user) %>
+
+<h5>投稿一覧</h5>
+
+<div class="tabs d-flex justify-content-between align-items-center">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#published">公開中</a>
+        </li>
+        <% if @user == current_user %>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#draft">下書き</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#unpublished">非公開</a>
+            </li>
+        <% end %>
+    </ul>
+</div>
+
+<div class="tab-content">
+    <div id="published" class="tab-pane fade show active">
+        <% @published_posts.each do |post| %>
+            <%= render "public/posts/index", post: post %>
+        <% end %>
+        
+        <%= paginate @published_posts %>
+    </div>
+    
+    <div id="draft" class="tab-pane fade">
+        <% @draft_posts.each do |post| %>
+            <%= render "public/posts/index", post: post %>
+        <% end %>
+        
+        <%= paginate @draft_posts %>
+    </div>
+    
+    <div id="unpublished" class="tab-pane fade">
+        <% @unpublished_posts.each do |post| %>
+            <%= render "public/posts/index", post: post %>
+        <% end %>
+        
+        <%= paginate @unpublished_posts %>
+    </div>
+    
+</div>

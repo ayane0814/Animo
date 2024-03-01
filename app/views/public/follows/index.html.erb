@@ -1,6 +1,6 @@
 <% @users.each do |user| %>
     <div>
-        <%= link_to user.name, follow_path(user) %>
+        <%= link_to user.name, user_path(user) %>
         
         <% unless user == current_user %>
             <% if user.following?(current_user, user.id).nil? %>

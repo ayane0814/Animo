@@ -12,28 +12,62 @@
         </div>
         
         <div class="col-8">
-            <h1>今日の笑顔の守護者</h1>
-            <%= render "public/posts/show", post: @post_today %>
-        </div>
-        
-        <div>
-            
+            <div class="row">
+                <div class="col-6 p-0 text-center">
+                    <h1>今日の笑顔の守護者</h1>
+                    <div class="mb-1">
+                        <%= image_tag @post_today.get_image(350, 350) %>
+                    </div>
+                </div>
+                
+                <div class="col-6 mt-5 pt-5 px-2">
+                    <div class="row justify-content-center p-0">
+                        <div class="col-1 p-0">
+                            <%= image_tag @post_today.user.get_profile_image(40, 40), class: "rounded-circle" %>
+                        </div>
+                        <div class="col-9 h4 m-0 font-weight-bold"><%= @post_today.posted_title %></div>
+                        <div class="col-10 mt-2"><%= @post_today.post_content %></div>
+                    </div>
+                    
+                    <div class="row mt-5 pt-5 d-flex justify-content-end">
+                        <div class="col-3 pt-5" id="laughed_buttons_<%= @post_today.id %>">
+                            <%= render "public/laughed_buttons/laughed", post: @post_today %>
+                        </div>
+                        <div class="col-3 pt-5" id="comment_counter">
+                            <%= render "public/comments/counter", post: @post_today %>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div>
-            <h3>新規投稿</h3>
+    
+        <h4>新規投稿</h4>
+        <div class="d-flex justify-content-center">
             <% @posts.each do |post| %>
-                <%= link_to(post_path(post)) do %>
-                    <%= image_tag post.get_image(50,50) %>
-                    <%= post.posted_title %>
-                    <%= post.post_content %>
-                <% end %>
+                <div class="col-3 p-1 m-2 border">
+                    <%= link_to(post_path(post)) do %>
+                        <div class="row">
+                            <div class="col">
+                                <%= image_tag post.get_image(100,100) %>
+                            </div>
+                            <div class="col">
+                                <div ><%= image_tag post.user.get_profile_image(40,40) %></div>
+                                <div ><%= post.posted_title.truncate(13) %></div>
+                                <div ><%= post.post_content.truncate(23) %></div>
+                                <div class="row">
+                                    <div id="laughed_buttons_<%= post.id %>">
+                                        <%= render "public/laughed_buttons/laughed", post: post %>
+                                    </div>
+                                    <div id="comment_counter">
+                                        <%= render "public/comments/counter", post: post %>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
             <% end %>
         </div>
-        
-        <div>
-            <%= link_to "投稿をもっと見る>>", posts_path %>
-        </div>
-    </div>
+        <%= link_to "投稿をもっと見る>>", posts_path %>
 </div>
