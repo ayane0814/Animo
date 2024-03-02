@@ -42,32 +42,37 @@
         </div>
     </div>
     
-        <h4>新規投稿</h4>
-        <div class="d-flex justify-content-center">
-            <% @posts.each do |post| %>
-                <div class="col-3 p-1 m-2 border">
-                    <%= link_to(post_path(post)) do %>
-                        <div class="row">
-                            <div class="col">
-                                <%= image_tag post.get_image(100,100) %>
-                            </div>
-                            <div class="col">
-                                <div ><%= image_tag post.user.get_profile_image(40,40) %></div>
-                                <div ><%= post.posted_title.truncate(13) %></div>
-                                <div ><%= post.post_content.truncate(23) %></div>
-                                <div class="row">
-                                    <div id="laughed_buttons_<%= post.id %>">
-                                        <%= render "public/laughed_buttons/laughed", post: post %>
-                                    </div>
-                                    <div id="comment_counter">
-                                        <%= render "public/comments/counter", post: post %>
-                                    </div>
-                                </div>
-                            </div>
+    <h4>新規投稿</h4>
+</div>
+
+<div class="row d-flex justify-content-center">
+    <% @posts.each do |post| %>
+        <div class="col-3 p-1 m-2 border">
+            <div class="row d-flex justify-content-center">
+                <%= link_to(post_path(post)) do %>
+                    <div class= "col-6 pr-3">
+                        <%= image_tag post.get_image(150,150) %>
+                    </div>
+                <% end %>
+                <div class= "col-6" >
+                    <div class="row">
+                        <div class="col-1 p-0"><%= image_tag post.user.get_profile_image(30,30), class: "rounded-circle" %></div>
+                        <div class="col-11 h6 font-weight-bold"><%= post.posted_title.truncate(13) %></div>
+                        <div class="col"><%= post.post_content.truncate(43) %></div>
+                    </div>
+                    <div class="row d-flex justify-content-end">
+                        <div class="mr-2" id="laughed_buttons_<%= post.id %>">
+                            <%= render "public/laughed_buttons/laughed", post: post %>
                         </div>
-                    <% end %>
+                        <div id="comment_counter">
+                            <%= render "public/comments/counter", post: post %>
+                        </div>
+                    </div>
                 </div>
-            <% end %>
+            </div>
         </div>
-        <%= link_to "投稿をもっと見る>>", posts_path %>
+    <% end %>
+</div>
+<div class="text-right">
+    <%= link_to "投稿をもっと見る>>", posts_path %>
 </div>

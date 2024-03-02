@@ -26,6 +26,7 @@ class Post < ApplicationRecord
     end
     
     def laughed_button_by?(user)
+        return false if user.nil?
         laughed_buttons.exists?(user_id: user.id)
     end
     
