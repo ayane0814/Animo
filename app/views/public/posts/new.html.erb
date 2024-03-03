@@ -1,32 +1,52 @@
-<h1>新規投稿</h1>
-<% if @post.errors.any? %>
-    <%= @post.errors.count %>件のエラーが発生しました
-    <ul>
-        <% @post.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
+<div class="container">
+    <h2>新規投稿</h2>
+    <div class="row mt-5">
+        <% if @post.errors.any? %>
+            <%= @post.errors.count %>件のエラーが発生しました
+            <ul>
+                <% @post.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
         <% end %>
-    </ul>
-<% end %>
+        
+        <table class="table table-lg table-borderless d-flex">
+            <%= form_with model: @post do |f| %>
+                <tr class="row">
+                    <td class="col-4">画像</td>
+                    <td class="col-4"><%= f.file_field :image, accept: "image/*" %></td>
+                </tr>
+                
+                <tr class="row">
+                    <td class="col-4">タイトル</td>
+                    <td><%= f.text_field :posted_title, size: "50x20" %></td>
+                </tr>
+                
+                <tr class="row">
+                    <td class="col-4">内容</td>
+                    <td><%= f.text_area :post_content, size: "50xauto" %></td>
+                </tr>
+                
+                <tr class="row">
+                    <td class="col-4">
+                        郵便番号<br>
+                        ※投稿には表示されません。
+                    </td>
+                    <td><%= text_field_tag :zipcode, nil %></td>
+                </tr>
+                
+                <tr class="row">
+                    <td class="col-4">住所</td>
+                    <td><%= f.text_field :address %></td>
+                </tr>
+                
+                <%= render "form", tag_name: @tag_name %>
+                
+                <%= render "display", post: @post, f: f %>
+            <% end %>
+        </table>
+        <%= javascript_pack_tag "jpostal", 'data-turbolinks-track': 'reload' %>
+    </div>
+</div>
 
-<%= form_with model: @post do |f| %>
-    <p>画像</p>
-    <%= f.file_field :image, accept: "image/*" %>
-    
-    <p>タイトル</p>
-    <%= f.text_field :posted_title %>
-    
-    <p>投稿内容</p>
-    <%= f.text_area :post_content %>
-    
-    <p>郵便番号</p>
-    <%= text_field_tag :zipcode, nil %>
-    
-    <p>住所</p>
-    <%= f.text_field :address %>
-    
-    <%= render "form", tag_name: @tag_name %>
-    
-    <%= render "display", post: @post, f: f %>
-<% end %>
-
-<%= javascript_pack_tag "jpostal", 'data-turbolinks-track': 'reload' %>
+<!--ここのレイアウトして終わった-->

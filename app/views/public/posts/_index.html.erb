@@ -1,14 +1,28 @@
-<h2>画像</h2>
-<%= link_to(post_path(post)) do %>
-    <%= image_tag post.get_image(200,200) %>
-<% end %>
-<h2>タイトル</h2>
-<p><%= post.posted_title %></p>
-<h2>本文</h2>
-<p><%= post.post_content %></p>
-<div id="comment_counter">
-    <%= render "public/comments/counter", post: post %>
+<div class="col-4 border d-flex align-items-center p-1">
+    <div class="row">
+        <div class="col-5">
+            <%= link_to(post_path(post)) do %>
+                <%= image_tag post.get_image(200,200) %>
+            <% end %>
+        </div>
+        
+        <div class="col-7">
+            <div class="row">
+                <div class="col-1 p-0"><%= image_tag post.user.get_profile_image(40,40), class: "rounded-circle" %></div>
+                <p class="col-11 h6 font-weight-bold"><%= post.posted_title.truncate(19) %></p>
+                <p class="col-10"><%= post.post_content.truncate(103) %></p>
+            </div>
+            <div class="row d-flex justify-content-end">
+                <p class="col justify-content-start">
+                    <span><i class="fa-solid fa-location-dot"></i> <%= post.address %></span>
+                </p>
+                <div class="mr-2" id="laughed_buttons_<%= post.id %>">
+                    <%= render "public/laughed_buttons/laughed", post: post %>
+                </div>
+                <div class="mr-4" id="comment_counter">
+                    <%= render "public/comments/counter", post: post %>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    <span><i class="fa-solid fa-location-dot"></i> <%= post.address %></span>
-</p>

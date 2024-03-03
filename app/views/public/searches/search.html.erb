@@ -3,5 +3,7 @@
     <%= render "public/users/index", users: @records %>
 <% else %>
     <h3>Posts search for "<%= @content %>"</h3>
-    <%= render "public/posts/index", posts: @records %>
+    <% @records.each do |post| %>
+        <%= render "public/posts/index", post: post %>
+    <% end %>
 <% end %>

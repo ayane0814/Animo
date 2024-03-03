@@ -1,17 +1,19 @@
-<div class="btn-group" role="group" id="buttonGroup">
-    <% if post.persisted? %>
-        <% if post.draft? %>
-            <%= f.submit "下書き保存", id: "draftButton", name: 'draft', class: "draft-btn" %>
-            <%= f.submit "公開する", id: "publishButton", name: 'published', class: "submit-btn" %>
-        <% elsif post.unpublished? %>
-            <%= f.submit "非公開にする", id: "unpublishButton", name: 'unpublished', class: "unpublish-btn" %>
-            <%= f.submit "公開する", id: "publishButton", name: 'published', class: "submit-btn" %>
+<tr class="row btn-group" role="group" id="buttonGroup">
+    <td>
+        <% if post.persisted? %>
+            <% if post.draft? %>
+                <%= f.submit "公開する", id: "publishButton", name: 'published', class: "submit-btn" %>
+                <%= f.submit "下書き保存", id: "draftButton", name: 'draft', class: "draft-btn" %>
+            <% elsif post.unpublished? %>
+                <%= f.submit "公開する", id: "publishButton", name: 'published', class: "submit-btn" %>
+                <%= f.submit "非公開にする", id: "unpublishButton", name: 'unpublished', class: "unpublish-btn" %>
+            <% else %>
+                <%= f.submit "公開する", id: "publishButton", name: 'published', class: "submit-btn" %>
+                <%= f.submit "非公開にする", id: "unpublishButton", name: 'unpublished', class: "unpublish-btn" %>
+            <% end %>
         <% else %>
-            <%= f.submit "非公開にする", id: "unpublishButton", name: 'unpublished', class: "unpublish-btn" %>
-            <%= f.submit "公開する", id: "publishButton", name: 'published', class: "submit-btn" %>
+            <%= f.submit "公開する", id: "postButton", name: 'postNew', class: "submit-btn" %>
+            <%= f.submit "下書き保存", id: "draftButton", name: 'draft', class: "draft-btn" %>
         <% end %>
-    <% else %>
-        <%= f.submit "下書き保存", id: "draftButton", name: 'draft', class: "draft-btn" %>
-        <%= f.submit "公開する", id: "postButton", name: 'postNew', class: "submit-btn" %>
-    <% end %>
-</div>
+    </td>
+</tr>

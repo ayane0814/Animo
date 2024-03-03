@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     root to: "homes#top"
     resources :posts, only: [:show, :destroy]
     resources :comments, only: [:destroy]
-    resources :users, only: [:index, :show, :edit, :update]
+    resources :users, param: :name, only: [:index, :show, :edit, :update]
     get "search" => "searches#search"
     get "tagsearch" => "tagsearches#search"
   end

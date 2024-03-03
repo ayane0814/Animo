@@ -1,4 +1,7 @@
-<div>
-    <%= label_tag :tag_name, "タグ（,区切り）で入力してください" %>
-    <%= text_field_tag :tag_name, tag_name %>
-</div>
+<tr class="row">
+    <td class="col-4">
+        タグ<br>
+        ※「,」区切りで入力してください。
+    </td>
+    <td><%= text_field_tag :tag_name, tag_name, size: "50x20" %></td>
+</tr>
