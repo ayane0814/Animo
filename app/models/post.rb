@@ -8,7 +8,7 @@ class Post < ApplicationRecord
     has_many :todays_favorites, -> { where(created_at: Time.zone.today.all_day) }
     belongs_to :user
     validates :image, presence: true
-    validates :posted_title, presence: true
+    validates :posted_title, presence: true, length: { in: 1..20 }
     validates :post_content, presence: true, length: { in: 1..140 }
     validates :address, presence: true
     

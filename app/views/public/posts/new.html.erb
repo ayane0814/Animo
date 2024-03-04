@@ -1,6 +1,6 @@
 <div class="container">
     <h2>新規投稿</h2>
-    <div class="row mt-5">
+    <div class="row mt-5 d-flex justify-content-center">
         <% if @post.errors.any? %>
             <%= @post.errors.count %>件のエラーが発生しました
             <ul>
@@ -10,43 +10,8 @@
             </ul>
         <% end %>
         
-        <table class="table table-lg table-borderless d-flex">
-            <%= form_with model: @post do |f| %>
-                <tr class="row">
-                    <td class="col-4">画像</td>
-                    <td class="col-4"><%= f.file_field :image, accept: "image/*" %></td>
-                </tr>
-                
-                <tr class="row">
-                    <td class="col-4">タイトル</td>
-                    <td><%= f.text_field :posted_title, size: "50x20" %></td>
-                </tr>
-                
-                <tr class="row">
-                    <td class="col-4">内容</td>
-                    <td><%= f.text_area :post_content, size: "50xauto" %></td>
-                </tr>
-                
-                <tr class="row">
-                    <td class="col-4">
-                        郵便番号<br>
-                        ※投稿には表示されません。
-                    </td>
-                    <td><%= text_field_tag :zipcode, nil %></td>
-                </tr>
-                
-                <tr class="row">
-                    <td class="col-4">住所</td>
-                    <td><%= f.text_field :address %></td>
-                </tr>
-                
-                <%= render "form", tag_name: @tag_name %>
-                
-                <%= render "display", post: @post, f: f %>
-            <% end %>
-        </table>
+        <%= render "new_edit", post: @post, tag_name: @tag_name %>
+        
         <%= javascript_pack_tag "jpostal", 'data-turbolinks-track': 'reload' %>
     </div>
 </div>
-
-<!--ここのレイアウトして終わった-->

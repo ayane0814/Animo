@@ -2,14 +2,14 @@
     <p class="m-0">
         <%= link_to post_laughed_buttons_path(post), method: :delete, remote: true, data: {"turbolinks" => false} do %>
             <i class="fa-solid fa-face-grin-squint-tears fa-2xl" style="color: #ff8800;"></i>
-            <span style="color: orange;">：<%= post.laughed_buttons.count %></span>
+            <span style="color: orange;"><%= post.laughed_buttons.count %></span>
         <% end %>
     </p>
 <% else %>
     <p class="m-0">
         <%= link_to post_laughed_buttons_path(post), method: :post, remote: true, data: {"turbolinks" => false} do %>
             <i class="fa-regular fa-face-grin-squint-tears fa-2xl" style="color: #000000;"></i>
-            ：<%= post.laughed_buttons.count %>
+            <span style="color: black;"><%= post.laughed_buttons.count %></span>
         <% end %>
     </p>
 <% end %>

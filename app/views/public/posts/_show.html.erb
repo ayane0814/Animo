@@ -1,6 +1,41 @@
-<h2>画像</h2>
-<%= image_tag post.get_image(200,200) %>
-<h2>タイトル</h2>
-<p><%= post.posted_title %></p>
-<h2>本文</h2>
-<p><%= post.post_content %></p>
+<div class="row">
+    <div class="col-9">
+        <div class="row">
+            <div class="col-7 p-0 d-flex justify-content-center"><%= image_tag post.get_image(600,600) %></div>
+            
+            <div class="col-5">
+                <div class="row">
+                    <div class="col-2"><%= image_tag @post.user.get_profile_image(60, 60), class: "rounded-circle" %></div>
+                    <div class="col-10 h5 font-weight-bold pt-3"><%= post.posted_title %></div>
+                </div>
+                <div class="col mt-2"><%= post.post_content %></div>
+                <div class="mt-2"><%= render "post", post: post %></div>
+                <div class="row mt-4">
+                    <div class="col-8"><span><i class="fa-solid fa-location-dot"></i> <%= post.address %></span></div>
+                    <div class="col-2" id="laughed_buttons_<%= post.id %>">
+                        <%= render "public/laughed_buttons/laughed", post: post %>
+                    </div>
+                    <div class="col-2" id="comment_counter">
+                        <%= render "public/comments/counter", post: post %>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end mt-5">
+                    <% if post.user == current_user %>
+                        <%= link_to "編集", edit_post_path(post) %>
+                        <%= link_to "削除", post_path(post), method: :delete, "data-confirm" => "本当に投稿を削除しますか？", class: "ml-2 text-danger" %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-3">
+        <h5>コメント一覧</h5>
+        
+            <div id="comment_index">
+                <%= render "public/comments/index", post: @post %>
+            </div>
+            <%= render "public/comments/form", post: @post, comment: @comment %>
+        
+    </div>
+</div>
