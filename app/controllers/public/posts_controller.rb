@@ -11,8 +11,10 @@ class Public::PostsController < ApplicationController
         
         if params[:draft].present?
             @post.is_display = :draft
+            flash[:notice] = "下書きが保存されました。"
         else
             @post.is_display = :published
+            flash[:notice] = "投稿が公開されました"
         end
         
         tag_names = params[:tag_name].split(",")
@@ -28,9 +30,9 @@ class Public::PostsController < ApplicationController
         @post.tags = tags
         if @post.save
             if @post.draft?
-                redirect_to draft_posts_path, notice: "下書きが保存されました。"
+                redirect_to draft_posts_path
             else
-                redirect_to post_path(@post), notice: "投稿が公開されました。"
+                redirect_to post_path(@post)
             end
         else
             @tag_name = params[:tag_name]
@@ -70,16 +72,13 @@ class Public::PostsController < ApplicationController
         
         if params[:draft].present?
             @post.is_display = :draft
-            notice_message = "下書きを保存しました。"
-            redirect_path = draft_posts_path
+            flash[:notice] = "下書きを保存しました。"
         elsif params[:unpublished].present?
             @post.is_display = :unpublished
-            notice_message = "非公開にしました。"
-            redirect_path = draft_posts_path
+            flash[:notice] = "非公開にしました。"
         else
             @post.is_display = :published
-            notice_message = "投稿を更新しました。"
-            redirect_path = post_path(@post)
+            flash[:notice] = "投稿を更新しました。"
         end
         
         tag_names = params[:tag_name].split(",")
