@@ -1,19 +1,11 @@
-<div class="container">
+<div class="container-fluid">
+    <h2>投稿一覧</h2>
     <div class="row">
-        <h1>投稿一覧</h1>
         <% @posts.each do |post| %>
-            <h2>画像</h2>
-            <%= link_to(admin_post_path(post)) do %>
-                <%= image_tag post.get_image(200,200) %>
-            <% end %>
-            <h2>タイトル</h2>
-            <p><%= post.posted_title %></p>
-            <h2>本文</h2>
-            <p><%= post.post_content %></p>
+            <%= render "public/posts/index", post: post %>
         <% end %>
-        <div>
-            <%= paginate @posts %>
-        </div>
     </div>
 </div>
-<!--レイアウト-->
+<div class="d-flex justify-content-center">
+    <%= paginate @posts %>
+</div>

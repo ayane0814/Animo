@@ -1,14 +1,11 @@
-<h1>笑った一覧</h1>
-<% @laughed_posts.each do |post| %>
-    <p>画像</p>
-    <%= link_to(post_path(post)) do %>
-        <%= image_tag post.get_image(200,200) %>
-    <% end %>
-    <p>タイトル</p>
-    <%= post.posted_title %>
-    <p>本文</p>
-    <%= post.post_content %>
-<% end %>
-<div>
+<div class="container-fluid">
+    <h2>笑った一覧</h2>
+    <div class="row">
+        <% @laughed_posts.each do |post| %>
+            <%= render "public/posts/index", post: post %>
+        <% end %>
+    </div>
+</div>
+<div class="d-flex justify-content-center">
     <%= paginate @laughed_posts %>
 </div>

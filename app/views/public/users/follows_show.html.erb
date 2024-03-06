@@ -1,15 +1,24 @@
-<h2><%= @user.name %>のフォローとフォロワー一覧</h2>
-
-<h3>フォロー --></h3>
-<% @follows.each do |follower| %>
-    <div>
-        <%= link_to follower.user.name, user_path(follower.user) %>
+<div class="container">
+    <h2><%= @user.name %>のフォローとフォロワー一覧</h2>
+    <div class="row">
+        <div class="col mt-5">
+            <h3>フォロー</h3>
+            <% @follows.each do |follow| %>
+                <div class="mb-2">
+                    <%= image_tag follow.user.get_profile_image(40,40), class: "rounded-circle" %>
+                    <%= link_to follow.user.name, user_path(follow.user), class: "text-dark" %>
+                </div>
+            <% end %>
+        </div>
+        
+        <div class="col mt-5">
+            <h3>フォロワー</h3>
+            <% @followers.each do |follower| %>
+                <div class="mb-2">
+                    <%= image_tag follower.user.get_profile_image(40,40), class: "rounded-circle" %>
+                    <%= link_to follower.user.name, user_path(follower.user), class: "text-dark" %>
+                </div>
+            <% end %>
+        </div>
     </div>
-<% end %>
-
-<h3>フォロワー --></h3>
-<% @followers.each do |follower| %>
-    <divd>
-        <%= link_to follower.user.name, user_path(follower.user) %>
-    </divd>
-<% end %>
+</div>

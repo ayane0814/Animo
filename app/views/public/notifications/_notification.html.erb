@@ -5,8 +5,8 @@
     <div class="form_inline">
         <span>
             <%= link_to user_path(recipient) do %>
-                <%= image_tag recipient.get_profile_image(10,10) %>
-                <strong>
+                <%= image_tag recipient.get_profile_image(40,40), class: "rounded-circle" %>
+                <strong class="text-dark h5">
                     <%= recipient.name %>
                 </strong>
             <% end %>
