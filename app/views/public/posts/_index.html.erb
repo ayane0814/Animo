@@ -1,12 +1,18 @@
 <div class="col-4 border p-1">
     <div class="row">
         <div class="col-5">
-            <%= link_to(post_path(post)) do %>
-                <%= image_tag post.get_image(200,200) %>
+            <% if current_user %>
+                <%= link_to(post_path(post)) do %>
+                    <%= image_tag post.get_image(200,200) %>
+                <% end %>
+            <% elsif current_admin %>
+                <%= link_to(admin_post_path(post)) do %>
+                    <%= image_tag post.get_image(200,200) %>
+                <% end %>
             <% end %>
         </div>
-        
-        <div class="col-7 px-5">
+        <!--postの検索-->
+        <div class="col-7 pr-5">
             <div class="row">
                 <div class="col-1 p-0"><%= image_tag post.user.get_profile_image(40,40), class: "rounded-circle" %></div>
                 <p class="col-10 h6 font-weight-bold align-middle ml-2"><%= post.posted_title.truncate(19) %></p>

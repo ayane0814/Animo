@@ -24,10 +24,7 @@
 
 <div class="container-fluid">
     <h5 class="text-center">投稿一覧</h5>
-    <div class="row">
-        
-    </div>
-    <div class="tabs d-flex justify-content-center align-items-center">
+    <div class="tabs d-flex justify-content-left align-items-center">
         <ul class="nav nav-tabs">
             <li class="nav-item">
                 <a class="nav-link active" data-toggle="tab" href="#published">公開中</a>
@@ -45,7 +42,7 @@
     
     <div class="tab-content">
         <div id="published" class="tab-pane fade show active">
-            <div class="row">
+            <div class="row mb-2">
                 <% @published_posts.each do |post| %>
                     <%= render "public/posts/index", post: post %>
                 <% end %>
@@ -56,7 +53,7 @@
         </div>
         
         <div id="draft" class="tab-pane fade">
-            <div class="row">
+            <div class="row mb-2">
                 <% @draft_posts.each do |post| %>
                     <%= render "public/posts/index", post: post %>
                 <% end %>
@@ -67,7 +64,7 @@
         </div>
         
         <div id="unpublished" class="tab-pane fade">
-            <div class="row">
+            <div class="row mb-2">
                 <% @unpublished_posts.each do |post| %>
                     <%= render "public/posts/index", post: post %>
                 <% end %>
@@ -76,6 +73,5 @@
                 <%= paginate @unpublished_posts %>
             </div>
         </div>
-        
     </div>
 </div>

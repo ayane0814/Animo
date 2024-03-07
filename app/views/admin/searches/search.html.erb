@@ -3,5 +3,5 @@
     <%= render "admin/users/index", users: @records %>
 <% else %>
     <h3>Posts search for "<%= @content %>"</h3>
-    <%= render "public/posts/index", posts: @records %>
+    <%= render "public/posts/index", post: @records %>
 <% end %>

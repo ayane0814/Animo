@@ -1,8 +1,0 @@
-<% post.comments.each do |comment| %>
-    <%= link_to admin_user_path(comment) do %>
-        <%= image_tag comment.user.get_profile_image(50,50) %><br>
-        <%= comment.user.name %>
-    <% end %>
-    <%= comment.comment_content %>
-    <%= link_to "削除", admin_comment_path(comment), method: :delete, "data-confirm" => "本当に削除しますか？", remote: true %>
-<% end %>

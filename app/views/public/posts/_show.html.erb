@@ -9,7 +9,7 @@
                     <div class="col-10 h5 font-weight-bold pt-3"><%= post.posted_title %></div>
                 </div>
                 <div class="text-break col mt-2"><%= post.post_content %></div>
-                <div class="mt-2"><%= render "post", post: post %></div>
+                <div class="mt-2"><%= render "public/posts/post", post: post %></div>
                 <div class="row mt-4">
                     <div class="col-8"><span><i class="fa-solid fa-location-dot"></i> <%= post.address %></span></div>
                     <div class="col-2" id="laughed_buttons_<%= post.id %>">
@@ -23,6 +23,8 @@
                     <% if post.user == current_user %>
                         <%= link_to "編集", edit_post_path(post) %>
                         <%= link_to "削除", post_path(post), method: :delete, "data-confirm" => "本当に投稿を削除しますか？", class: "ml-2 text-danger" %>
+                    <% elsif current_admin %>
+                        <%= link_to "削除", admin_post_path(post), method: :delete, "data-confirm" => "本当に投稿を削除しますか？", class: "ml-2 text-danger" %>
                     <% end %>
                 </div>
             </div>
@@ -34,6 +36,8 @@
         <div id="comment_index">
             <%= render "public/comments/index", post: @post %>
         </div>
-        <%= render "public/comments/form", post: @post, comment: @comment %>
+        <% unless current_admin %>
+            <%= render "public/comments/form", post: @post, comment: @comment %>
+        <% end %>
     </div>
 </div>

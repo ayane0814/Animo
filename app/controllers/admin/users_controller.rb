@@ -7,6 +7,17 @@ class Admin::UsersController < ApplicationController
     
     def show
         @user = User.find_by(name: params[:name])
+        respond_to do |format|
+            format.html do
+                @posts = Post.page(params[:page])
+            end
+            format.json do
+                @posts = Post.all
+            end
+        end
+        @published_posts = @user.posts.published.order(created_at: :desc).page(params[:page])
+        @draft_posts = @user.posts.draft.order(created_at: :desc).page(params[:page])
+        @unpublished_posts = @user.posts.unpublished.order(created_at: :desc).page(params[:page])
     end
     
     def edit

@@ -11,7 +11,9 @@
             <td class="text-break pt-4"><%= comment.comment_content %></td>
             <td class="col-2 align-bottom">
                 <% if comment.user == current_user %>
-                    <%= link_to "削除", post_comment_path(post, comment), method: :delete, remote: true, class: "text-danger" %>
+                    <%= link_to "削除", post_comment_path(post, comment), method: :delete, remote: true, "data-confirm" => "本当に投稿を削除しますか？", class: "text-danger" %>
+                <% elsif current_admin %>
+                    <%= link_to "削除", admin_comment_path(comment), method: :delete, "data-confirm" => "本当に削除しますか？", remote: true %>
                 <% end %>
             </td>
         </tr>

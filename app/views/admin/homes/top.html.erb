@@ -2,7 +2,35 @@
     <h2>投稿一覧</h2>
     <div class="row">
         <% @posts.each do |post| %>
-            <%= render "public/posts/index", post: post %>
+            <div class="col-4 border p-1">
+                <div class="row">
+                    <div class="col-5">
+                        <%= link_to(admin_post_path(post)) do %>
+                            <%= image_tag post.get_image(200,200) %>
+                        <% end %>
+                    </div>
+                    
+                    <div class="col-7 pr-5">
+                        <div class="row">
+                            <div class="col-1 p-0"><%= image_tag post.user.get_profile_image(40,40), class: "rounded-circle" %></div>
+                            <p class="col-10 h6 font-weight-bold align-middle ml-2"><%= post.posted_title.truncate(19) %></p>
+                        </div>
+                        <div class="text-break col mt-2"><%= post.post_content.truncate(103) %></div>
+                        <div class="mt-2"><%= render "public/posts/post", post: post %></div>
+                        <p class="row">
+                                <span><i class="fa-solid fa-location-dot"></i> <%= post.address %></span>
+                            </p>
+                        <div class="row mt-4 d-flex justify-content-end">
+                            <div class="mr-2" id="laughed_buttons_<%= post.id %>">
+                                <%= render "public/laughed_buttons/laughed", post: post %>
+                            </div>
+                            <div id="comment_counter">
+                                <%= render "public/comments/counter", post: post %>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         <% end %>
     </div>
 </div>
