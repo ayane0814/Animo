@@ -1,2 +1,8 @@
-<h2><%= @model %>s search for "<%= @word %>"</h2>
-<%= render "public/posts/index", posts: @posts %>
+<div class="container-fluid">
+    <h2>タグ検索結果 "<%= @word %>"</h2>
+    <div class="row mb-1">
+        <% @posts.each do |post| %>
+            <%= render "public/posts/index", post: post %>
+        <% end %>
+    </div>
+</div>

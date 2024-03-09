@@ -8,7 +8,9 @@
     <% users.each do |user| %>
         <tr>
             <td class="text-center"><%= user.id %></td>
-            <td><%= link_to user.name, admin_user_path(user), class: "text-dark font-weight-bold" %></td>
+            <td>
+                <%= link_to user.name, admin_user_path(user), class: "text-dark font-weight-bold" %>
+            </td>
             <td><%= user.email %></td>
             <td><%= user.status_label %></td>
         </tr>

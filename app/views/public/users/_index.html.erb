@@ -1,12 +1,12 @@
-<table>
+<table class="table">
     <tr>
-        <td></td>
-        <td>名前</td>
+        <th class="col-1 text-center"></th>
+        <th>名前</th>
     </tr>
     <% users.each do |user| %>
         <tr>
-            <td></td>
-            <td><%= link_to user.name, user_path(user) %></td>
+            <td class="text-right"><%= image_tag user.get_profile_image(40,40), class: "rounded-circle" %></td>
+            <td><%= link_to user.name, user_path(user), class: "text-dark font-weight-bold" %></td>
         </tr>
     <% end %>
 </table>
