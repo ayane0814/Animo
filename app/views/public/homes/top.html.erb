@@ -5,7 +5,7 @@
             <p class="text-center">
                 おかえりなさい、ここは皆さんに笑顔を届ける<br>
                 コミュニティサイト「あにも」です。<br>
-                動物の写真・動画を投稿でき、位置情報も載せられる<br>
+                動物の写真を投稿でき、位置情報も載せられる<br>
                 ので、どこで動物に会えるのかがわかります。<br>
                 皆さんの笑顔を守れますように！
             </p>
@@ -16,27 +16,35 @@
                 <div class="col-6 p-0 text-center">
                     <h1>今日の笑顔の守護者</h1>
                     <div class="mb-1">
-                        <%= image_tag @post_today.get_image(350, 350) %>
+                        <% if @post_today.present? %>
+                            <%= image_tag @post_today.get_image(350, 350) %>
+                        <% else %>
+                            <p class="mt-5"><%= @post_today_text %></p>
+                        <% end %>
                     </div>
                 </div>
                 
                 <div class="col-6 mt-5 pt-5 px-2">
-                    <div class="row justify-content-center p-0">
-                        <div class="col-1 p-0">
-                            <%= image_tag @post_today.user.get_profile_image(40, 40), class: "rounded-circle" %>
+                    <% if @post_today %>
+                        <div class="row justify-content-center p-0">
+                            <div class="col-1 p-0">
+                                <%= image_tag @post_today.user.get_profile_image(40, 40), class: "rounded-circle" %>
+                            </div>
+                            <div class="col-9 h4 m-0 font-weight-bold"><%= @post_today.posted_title %></div>
+                            <div class="col-10 mt-2"><%= @post_today.post_content %></div>
                         </div>
-                        <div class="col-9 h4 m-0 font-weight-bold"><%= @post_today.posted_title %></div>
-                        <div class="col-10 mt-2"><%= @post_today.post_content %></div>
-                    </div>
-                    
-                    <div class="row mt-5 pt-5 d-flex justify-content-end">
-                        <div class="col-3 pt-5" id="laughed_buttons_<%= @post_today.id %>">
-                            <%= render "public/laughed_buttons/laughed", post: @post_today %>
+                        
+                        <div class="row mt-5 pt-5 d-flex justify-content-end">
+                            <div class="col-3 pt-5" id="laughed_buttons_<%= @post_today.id %>">
+                                <%= render "public/laughed_buttons/laughed", post: @post_today %>
+                            </div>
+                            <div class="col-3 pt-5" id="comment_counter">
+                                <%= render "public/comments/counter", post: @post_today %>
+                            </div>
                         </div>
-                        <div class="col-3 pt-5" id="comment_counter">
-                            <%= render "public/comments/counter", post: @post_today %>
-                        </div>
-                    </div>
+                    <% else %>
+                        <p> </p>
+                    <% end %>
                 </div>
             </div>
         </div>

@@ -15,8 +15,8 @@
             <h3>フォロワー</h3>
             <% @followers.each do |follower| %>
                 <div class="mb-2">
-                    <%= image_tag follower.user.get_profile_image(40,40), class: "rounded-circle" %>
-                    <%= link_to follower.user.name, user_path(follower.user), class: "text-dark" %>
+                    <%= image_tag follower.target_user.get_profile_image(40,40), class: "rounded-circle" %>
+                    <%= link_to follower.target_user.name, user_path(follower.target_user), class: "text-dark" %>
                 </div>
             <% end %>
         </div>

@@ -1,5 +1,12 @@
 @use '~bootstrap/scss/bootstrap';
 
+.custom_font {
+  font-family: "Yusei Magic", "RocknRoll One";
+  font-weight: 400;
+  font-style: normal;
+}
+
+
 #map {
     width: 100%;
     height: calc(100vh - 88px - 179px);
