@@ -32,6 +32,13 @@ class Public::UsersController < ApplicationController
         end
     end
     
+    def withdraw
+        @user = User.find(current_user.id)
+        @user.update(is_active: false)
+        reset_session
+        redirect_to root_path
+    end
+    
     def follows_show
         @user = User.find_by(name: params[:name])
         @follows = @user.followed(@user)

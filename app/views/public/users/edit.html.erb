@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="col text-center"><%= f.submit "変更保存", class: "btn btn-dark" %></div>
                 <div class="col text-center">
-                    <%= link_to "退会する", withdraw_users_path, method: :delete, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
+                    <%= link_to "退会する", withdraw_users_path, method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
                 </div>
             </div>
             <% end %>
