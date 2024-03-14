@@ -10,7 +10,7 @@ class Post < ApplicationRecord
     validates :image, presence: true
     validates :posted_title, presence: true, length: { in: 1..20 }
     validates :post_content, presence: true, length: { in: 1..140 }
-    validates :address, presence: true
+
     
     geocoded_by :address
     after_validation :geocode

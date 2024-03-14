@@ -6,7 +6,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :posted_title, null: false
       t.text :post_content, null: false
       t.boolean :is_display, default: 0, null: false
-      t.string :address, default: "", null: false
+      t.string :address, default: ""
       t.float :latitude, default: 0, null: false
       t.float :longitude, default: 0, null: false
 
