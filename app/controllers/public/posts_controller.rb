@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
     before_action :authenticate_user!
+    before_action :post_edit_user, only: [:edit, :update]
     
     def new
         @post = Post.new
@@ -113,5 +114,12 @@ class Public::PostsController < ApplicationController
     
     def post_params
         params.require(:post).permit(:posted_title, :post_content, :image)
+    end
+    
+    def post_edit_user
+        user = User.find(params[:id])
+        unless user.id == current_user.id || current_user.guest_user?
+            redirect_to user_path(current_user)
+        end
     end
 end

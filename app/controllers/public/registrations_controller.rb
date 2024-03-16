@@ -4,7 +4,11 @@ class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   
   def after_sign_up_path_for(resource)
-    user_path(current_user)
+    if resource.is_a?(User) && resource.valid?
+      user_path(current_user)
+    else
+      new_user_registration_path
+    end
   end
   
   def configure_sign_up_params

@@ -2,17 +2,26 @@
     <table class="table table-lg table-borderless">
         <tr class="row">
             <th class="col-3 text-right">画像</th>
-            <td class="col-9"><%= f.file_field :image, accept: "image/*" %></td>
+            <td class="col-9">
+                <%= f.file_field :image, accept: "image/*" %><br>
+                ※必須
+            </td>
         </tr>
         
         <tr class="row">
             <th class="col-3 text-right">タイトル</th>
-            <td class="col-9"><%= f.text_field :posted_title, size: "50x20" %></td>
+            <td class="col-9">
+                <%= f.text_field :posted_title, size: "50x20" %>
+                ※必須
+            </td>
         </tr>
         
         <tr class="row">
             <th class="col-3 text-right">内容</th>
-            <td class="col-9"><%= f.text_area :post_content, size: "50xauto" %></td>
+            <td class="col-9">
+                <%= f.text_area :post_content, size: "50xauto" %>
+                ※必須
+            </td>
         </tr>
         
         <tr class="row">

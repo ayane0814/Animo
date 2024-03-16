@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
     before_action :authenticate_user!
     before_action :ensure_guest_user, only: [:edit]
     before_action :set_user, except: [:edit, :update, :withdraw]
+    before_action :is_matching_login_user, only: [:edit, :update]
     
     def show
         @user = User.find_by(name: params[:name])
@@ -66,6 +67,13 @@ class Public::UsersController < ApplicationController
         @user = User.find_by(name: params[:name])
         if @user.guest_user?
           redirect_to user_path(@user), notice: "ゲストユーザーはプロフィール編集画面へ遷移できません。"
+        end
+    end
+    
+    def is_matching_login_user
+        user = User.find_by(name: params[:name])
+        unless user.name == current_user.name
+            redirect_to user_path(current_user)
         end
     end
   
