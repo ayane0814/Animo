@@ -11,5 +11,7 @@
         <% end %>
         
         <%= render "new_edit", post: @post, tag_name: @tag_name %>
+        
+        <%= javascript_pack_tag "jpostal", 'data-turbolinks-track': 'reload' %>
     </div>
 </div>

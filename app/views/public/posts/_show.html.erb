@@ -5,7 +5,7 @@
             
             <div class="col-5">
                 <div class="row">
-                    <div class="col-2"><%= image_tag @post.user.get_profile_image(60, 60), class: "rounded-circle" %></div>
+                    <div class="col-2"><%= image_tag post.user.get_profile_image(60, 60), class: "rounded-circle" %></div>
                     <div class="col-10 h5 font-weight-bold pt-3"><%= post.posted_title %></div>
                 </div>
                 <div class="text-break col mt-2"><%= post.post_content %></div>
@@ -34,10 +34,10 @@
     <div class="col-3">
         <h5>コメント一覧</h5>
         <div id="comment_index">
-            <%= render "public/comments/index", post: @post %>
+            <%= render "public/comments/index", post: post %>
         </div>
         <% unless current_admin %>
-            <%= render "public/comments/form", post: @post, comment: @comment %>
+            <%= render "public/comments/form", post: post, comment: comment %>
         <% end %>
     </div>
 </div>

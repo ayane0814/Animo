@@ -18,36 +18,38 @@ async function initMap() {
   // if (response.status == 200) {
     const items = response.data.items
     items.forEach((item) => {
-      const marker = new google.maps.Marker({
-        position: new google.maps.LatLng(item.latitude, item.longitude),
-        map,
-        title: item.posted_title,
-      });
-      
-      const information = new google.maps.InfoWindow({
-        content:`
-          <div class="information container p-0">
-            <div class="mb-3 d-flex align-items-center">
-              <img class="rounded-circle mr-2" src="${item.user.image}" width="40" height="40"><p class="lead m-0 font-weight-bold">${item.user.name}</p>
-            </div>
-            <div class="mb-3">
-              <img class="thumbnail" src="${item.image}" width="600" height="300" loading="lazy">
-            </div>
-            <div>
-              <h1 class="h4 font-weight-bold">${item.posted_title}</h1>
-              <p class="text-muted">${item.address}</p>
-              <p class="lead">${item.post_content}</p>
-            </div>
-          </div>
-        `,
-        ariaLabel: item.posted_title,
-      });
-      marker.addListener("click", () => {
-        information.open({
-          anchor: marker,
+      if (!item.draft && !item.hidden && item.latitude !== 0 && item.longitude !== 0) {
+        const marker = new google.maps.Marker({
+          position: new google.maps.LatLng(item.latitude, item.longitude),
           map,
+          title: item.posted_title,
+        });
+        
+        const information = new google.maps.InfoWindow({
+          content:`
+            <div class="information container p-0">
+              <div class="mb-3 d-flex align-items-center">
+                <img class="rounded-circle mr-2" src="${item.user.image}" width="40" height="40"><p class="lead m-0 font-weight-bold">${item.user.name}</p>
+              </div>
+              <div class="mb-3">
+                <img class="thumbnail" src="${item.image}" width="600" height="300" loadingされないようにしたいのですがlazy">
+              </div>
+              <div>
+                <h1 class="h4 font-weight-bold">${item.posted_title}</h1>
+                <p class="text-muted">${item.address}</p>
+                <p class="lead">${item.post_content}</p>
+              </div>
+            </div>
+          `,
+          ariaLabel: item.posted_title,
+        });
+        marker.addListener("click", () => {
+          information.open({
+            anchor: marker,
+            map,
+          })
         })
-      })  
+      }
     })
   }
 // }

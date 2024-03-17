@@ -113,12 +113,12 @@ class Public::PostsController < ApplicationController
     private
     
     def post_params
-        params.require(:post).permit(:posted_title, :post_content, :image)
+        params.require(:post).permit(:posted_title, :post_content, :image, :address)
     end
     
     def post_edit_user
-        user = User.find(params[:id])
-        unless user.id == current_user.id || current_user.guest_user?
+        post = Post.find_by(id: params[:id])
+        unless post && post.user_id == current_user.id
             redirect_to user_path(current_user)
         end
     end
