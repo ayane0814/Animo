@@ -13,9 +13,12 @@ class Public::PostsController < ApplicationController
         if params[:draft].present?
             @post.is_display = :draft
             flash[:notice] = "下書きが保存されました。"
+        elsif params[:unpublished].present?
+            @post.is_display = :unpublished
+            flash[:notice] = "非公開に保存しました。"
         else
             @post.is_display = :published
-            flash[:notice] = "投稿が公開されました"
+            flash[:notice] = "投稿が公開されました。"
         end
         
         tag_names = params[:tag_name].split(",")
@@ -48,6 +51,7 @@ class Public::PostsController < ApplicationController
             end
             format.json do
                 @posts = Post.all
+                
             end
         end
         @published_posts = Post.published.order(created_at: :desc).page(params[:page])
@@ -108,12 +112,14 @@ class Public::PostsController < ApplicationController
     end
     
     def draft
+        @post = Post.find(params[:id])
+        @comment = Comment.new
     end
     
     private
     
     def post_params
-        params.require(:post).permit(:posted_title, :post_content, :image, :address)
+        params.require(:post).permit(:posted_title, :post_content, :image, :address, :is_display)
     end
     
     def post_edit_user

@@ -12,6 +12,7 @@ json.data do
             json.address post.address
             json.latitude post.latitude
             json.longitude post.longitude
+            json.is_display post.is_display
         end
     end
 end

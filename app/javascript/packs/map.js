@@ -18,7 +18,7 @@ async function initMap() {
   // if (response.status == 200) {
     const items = response.data.items
     items.forEach((item) => {
-      if (!item.draft && !item.hidden && item.latitude !== 0 && item.longitude !== 0) {
+      if (!(item.is_display === "draft" || item.is_display === "unpublished" || (item.latitude === 0 && item.longitude === 0))) {
         const marker = new google.maps.Marker({
           position: new google.maps.LatLng(item.latitude, item.longitude),
           map,
@@ -51,7 +51,7 @@ async function initMap() {
         })
       }
     })
-  }
 // }
+}
 
 initMap();

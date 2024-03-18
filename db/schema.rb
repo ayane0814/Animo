@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2024_02_12_100636) do
     t.integer "user_id", null: false
     t.string "posted_title", null: false
     t.text "post_content", null: false
-    t.boolean "is_display", default: false, null: false
+    t.string "is_display", null: false
     t.string "address", default: ""
     t.float "latitude", default: 0.0, null: false
     t.float "longitude", default: 0.0, null: false

@@ -15,7 +15,7 @@ class Post < ApplicationRecord
     geocoded_by :address
     after_validation :geocode
     
-    enum is_display: { published: 0, draft: 1, unpublished: 2 }
+    enum is_display: { published: "published", draft: "draft", unpublished: "unpublished" }
     
     scope :published, -> { where(is_display: "published") }
     scope :draft, -> { where(is_display: "draft") }
