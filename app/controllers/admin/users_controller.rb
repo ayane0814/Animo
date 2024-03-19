@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
     before_action :authenticate_admin!
+    before_action :ensure_admin, only: [:edit]
     
     def index
         @users = User.page(params[:page]).per(10)
@@ -34,5 +35,12 @@ class Admin::UsersController < ApplicationController
     
     def user_params
         params.require(:user).permit(:name, :email, :is_active)
+    end
+    
+    def ensure_admin
+        if current_admin
+            user = User.find_by(name: params[:name])
+          redirect_to admin_user_path(user), notice: "ゲストユーザーのプロフィール編集はできません。"
+        end
     end
 end

@@ -33,11 +33,7 @@ class Public::PostsController < ApplicationController
         
         @post.tags = tags
         if @post.save
-            if @post.draft?
-                redirect_to draft_posts_path
-            else
-                redirect_to post_path(@post)
-            end
+            redirect_to post_path(@post)
         else
             @tag_name = params[:tag_name]
             render :new
@@ -112,8 +108,7 @@ class Public::PostsController < ApplicationController
     end
     
     def draft
-        @post = Post.find(params[:id])
-        @comment = Comment.new
+        
     end
     
     private
