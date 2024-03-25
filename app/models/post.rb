@@ -22,7 +22,7 @@ class Post < ApplicationRecord
     scope :unpublished, -> { where(is_display: "unpublished") }
     
     def get_image(width, height)
-        image.variant(resize_to_fill: [width, height]).processed
+        image.variant(gravity: :center, resize: "#{width}x#{height}", crop: "#{width}x#{height}+0+0").processed
     end
     
     def laughed_button_by?(user)
