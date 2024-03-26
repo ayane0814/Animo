@@ -8,7 +8,9 @@
         <h3>投稿検索結果 "<%= @content %>"</h3>
         <div class="row mb-1">
             <% @records.each do |post| %>
-                <%= render "public/posts/index", post: post %>
+                <% if post.is_display === "published" %>
+                    <%= render "public/posts/index", post: post %>
+                <% end %>
             <% end %>
         </div>
     <% end %>
