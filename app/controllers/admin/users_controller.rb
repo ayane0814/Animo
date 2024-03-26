@@ -38,9 +38,9 @@ class Admin::UsersController < ApplicationController
     end
     
     def ensure_admin
-        if current_admin
-            user = User.find_by(name: params[:name])
-          redirect_to admin_user_path(user), notice: "ゲストユーザーのプロフィール編集はできません。"
+        user = User.find_by(name: params[:name])
+        if user.guest_user?
+            redirect_to admin_user_path(user), notice: "ゲストユーザーのプロフィール編集はできません。"
         end
     end
 end
