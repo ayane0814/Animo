@@ -5,14 +5,10 @@ class ApplicationController < ActionController::Base
     
     
     def check_admin
-        
         if admin_signed_in?
             return false
         else
             return true
         end
-        
     end
-    
-    
 end

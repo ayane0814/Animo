@@ -47,7 +47,6 @@ class Public::PostsController < ApplicationController
             end
             format.json do
                 @posts = Post.all
-                
             end
         end
         @published_posts = Post.published.order(created_at: :desc).page(params[:page])

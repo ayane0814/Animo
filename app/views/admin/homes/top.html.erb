@@ -18,8 +18,8 @@
                         <div class="text-break col mt-2"><%= post.post_content.truncate(103) %></div>
                         <div class="mt-2"><%= render "public/posts/post", post: post %></div>
                         <p class="row">
-                                <span><i class="fa-solid fa-location-dot"></i> <%= post.address %></span>
-                            </p>
+                            <span><i class="fa-solid fa-location-dot"></i> <%= post.address %></span>
+                        </p>
                         <div class="row mt-4 d-flex justify-content-end">
                             <div class="mr-2" id="laughed_buttons_<%= post.id %>">
                                 <%= render "public/laughed_buttons/laughed", post: post %>
