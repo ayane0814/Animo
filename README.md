@@ -57,6 +57,22 @@ https://docs.google.com/spreadsheets/d/1ohvHaf6DwvVoK40qeEkrfdw1Lf2_rZwi7-c-ZIf9
 - IDE：Cloud9
 ​
 ## 使用素材
+
 ###フリーイラスト素材として以下を使用
 - ぱくたそ 
 https://www.pakutaso.com/
+
+- illustAC
+https://www.ac-illust.com/
+
+- Font Awesome
+https://fontawesome.com/
+
+- Canva
+https://www.canva.com/ja_jp/logos/
+
+- Google Fonts
+https://fonts.google.com/
+
+- Google Maps Platform
+https://developers.google.com/maps?hl=ja
