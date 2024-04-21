@@ -59,7 +59,6 @@ https://docs.google.com/spreadsheets/d/1ohvHaf6DwvVoK40qeEkrfdw1Lf2_rZwi7-c-ZIf9
 ## 使用素材
 
 ### フリーイラスト素材として以下を使用
-
 - ぱくたそ 
 https://www.pakutaso.com/
 
@@ -69,11 +68,14 @@ https://www.ac-illust.com/
 - Font Awesome
 https://fontawesome.com/
 
+### 無料ロゴ作成
 - Canva
 https://www.canva.com/ja_jp/logos/
 
+### フリーフォント
 - Google Fonts
 https://fonts.google.com/
 
+### マップ
 - Google Maps Platform
 https://developers.google.com/maps?hl=ja
