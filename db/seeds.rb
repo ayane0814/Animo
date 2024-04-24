@@ -89,46 +89,71 @@ post6 = Post.new(
 post6.image.attach(io: File.open(Rails.root.join('app/assets/images/dog3.jpg')), filename: 'dog3.jpg')
 post6.save!
 
-# post7 = Post.new(
-#     user: user7,
-#     posted_title: "猫ちゃんびっくり",
-#     post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
-#     tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")],
-#     address: "広島県広島市東区",
-#     is_display: "published"
-#     )
-# post7.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
-# post7.save!
+post7 = Post.new(
+    user: user7,
+    posted_title: "下書きタイトル後で考える",
+    post_content: "猫ちゃんの中ではめずらしく触られても嫌がらないしこんな事してもされるがままでおとなしいです。
+                踊ってるように見えて笑えたので投稿してみました。",
+    tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "踊り")],
+    address: "広島県広島市東区",
+    is_display: "draft"
+    )
+post7.image.attach(io: File.open(Rails.root.join('app/assets/images/cat2.jpg')), filename: 'cat2.jpg')
+post7.save!
 
-# post8 = Post.new(
-#     user: user8,
-#     posted_title: "猫ちゃんびっくり",
-#     post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
-#     tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")],
-#     address: "東京都世田谷区",
-#     is_display: "published"
-#     )
-# post8.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
-# post8.save!
+post8 = Post.new(
+    user: user8,
+    posted_title: "ポメラニアンと風",
+    post_content: "ポメラニアンと言ったら風、風と言ったらポメラニアン。この二つはセット。
+                もともとふわふわで犬の形してないのに、風が吹くともっと犬じゃなくなる！この溶けてるポメを見てほしいです！",
+    tags: [Tag.find_or_create_by(name: "溶ける"), Tag.find_or_create_by(name: "ポメラニアンと風")],
+    address: "東京都世田谷区",
+    is_display: "unpublished"
+    )
+post8.image.attach(io: File.open(Rails.root.join('app/assets/images/dog4.jpg')), filename: 'dog4.jpg')
+post8.save!
 
-# post9 = Post.new(
-#     user: user9,
-#     posted_title: "猫ちゃんびっくり",
-#     post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
-#     tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")],
-#     address: "大阪府大阪市西淀川区",
-#     is_display: "published"
-#     )
-# post9.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
-# post9.save!
+post9 = Post.new(
+    user: user9,
+    posted_title: "何もしてなくても面白い",
+    post_content: "カピバラってなにもしてなくても面白いですよね。",
+    tags: [Tag.find_or_create_by(name: "カピバラ"), Tag.find_or_create_by(name: "日向ぼっこ")],
+    address: "大阪府大阪市西淀川区",
+    is_display: "published"
+    )
+post9.image.attach(io: File.open(Rails.root.join('app/assets/images/kapibara.jpg')), filename: 'kapibara.jpg')
+post9.save!
 
-# post10 = Post.new(
-#     user: user10,
-#     posted_title: "猫ちゃんびっくり",
-#     post_content: "初めて投稿します！うちの猫がでかい魚を見てびっくりしてる顔です！最近の写真で一番のお気に入りです。",
-#     tags: [Tag.find_or_create_by(name: "猫"), Tag.find_or_create_by(name: "びっくり")],
-#     address: "大阪府大阪市西淀川区",
-#     is_display: "published"
-#     )
-# post10.image.attach(io: File.open(Rails.root.join('app/assets/images/neko.jpg')), filename: 'neko.jpg')
-# post10.save!
+post10 = Post.new(
+    user: user10,
+    posted_title: "退屈みたいですｗ",
+    post_content: "新しいおもちゃを買って遊んでみたんですが、全然反応ありません！
+                そして、こんな顔されましたｗおもちゃには興味なしです！！！",
+    tags: [Tag.find_or_create_by(name: "無反応"), Tag.find_or_create_by(name: "猫")],
+    address: "神奈川県横浜市旭区",
+    is_display: "published"
+    )
+post10.image.attach(io: File.open(Rails.root.join('app/assets/images/cat3.jpg')), filename: 'cat3.jpg')
+post10.save!
+
+post11 = Post.new(
+    user: user11,
+    posted_title: "きゅうりでおどろくやつを試したら",
+    post_content: "動画とかでよく見るキュウリでびっくりする猫、あれ信じてなかったのでやってみたら…。本当にびっくりしてましたｗ",
+    tags: [Tag.find_or_create_by(name: "びっくり"), Tag.find_or_create_by(name: "猫")],
+    address: "大阪府大阪市此花区",
+    is_display: "published"
+    )
+post11.image.attach(io: File.open(Rails.root.join('app/assets/images/cat4.jpg')), filename: 'cat4.jpg')
+post11.save!
+
+post12 = Post.new(
+    user: user8,
+    posted_title: "人懐っこいうし",
+    post_content: "スマホで写真撮ろうとしたらめっちゃ近づいてきたｗ",
+    tags: [Tag.find_or_create_by(name: "牧場"), Tag.find_or_create_by(name: "うし")],
+    address: "熊本県球磨郡水上村岩野",
+    is_display: "published"
+    )
+post12.image.attach(io: File.open(Rails.root.join('app/assets/images/ushi.jpg')), filename: 'ushi.jpg')
+post12.save!

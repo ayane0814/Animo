@@ -68,6 +68,9 @@ https://www.ac-illust.com/
 - Font Awesome
 https://fontawesome.com/
 
+- Pexels
+https://www.pexels.com/ja-jp/
+
 ### 無料ロゴ作成
 - Canva
 https://www.canva.com/ja_jp/logos/
