@@ -1,6 +1,6 @@
 class Public::PostsController < ApplicationController
     before_action :authenticate_user!
-    before_action :post_edit_user, only: [:edit, :update]
+    before_action :post_edit_destroy, only: [:destroy, :edit, :update]
     
     def new
         @post = Post.new
@@ -116,7 +116,7 @@ class Public::PostsController < ApplicationController
         params.require(:post).permit(:posted_title, :post_content, :image, :address, :is_display)
     end
     
-    def post_edit_user
+    def post_edit_destroy
         post = Post.find_by(id: params[:id])
         unless post && post.user_id == current_user.id
             redirect_to user_path(current_user)

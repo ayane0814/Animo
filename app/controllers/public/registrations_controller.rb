@@ -5,7 +5,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
   
   def after_sign_up_path_for(resource)
     if resource.is_a?(User) && resource.valid?
-      user_path(current_user)
+      user_path(resource)
     else
       new_user_registration_path
     end
