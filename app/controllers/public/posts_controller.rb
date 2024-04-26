@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
     before_action :authenticate_user!
-    before_action :post_edit_destroy, only: [:destroy, :edit, :update]
+    before_action :post_user_id, only: [:destroy, :edit, :update]
+    before_action :post_published, only: [:show]
     
     def new
         @post = Post.new
@@ -77,6 +78,7 @@ class Public::PostsController < ApplicationController
             @post.is_display = :unpublished
             flash[:notice] = "非公開にしました。"
         else
+            post_user_id
             @post.is_display = :published
             flash[:notice] = "投稿を更新しました。"
         end
@@ -116,10 +118,19 @@ class Public::PostsController < ApplicationController
         params.require(:post).permit(:posted_title, :post_content, :image, :address, :is_display)
     end
     
-    def post_edit_destroy
+    def post_user_id
         post = Post.find_by(id: params[:id])
         unless post && post.user_id == current_user.id
             redirect_to user_path(current_user)
+        end
+    end
+    
+    def post_published
+        @post = Post.find_by(id: params[:id])
+        if (@post.is_display == "unpublished" || @post.is_display == "draft") && @post.user != current_user
+            respond_to do |format|
+                format.html { redirect_to user_path(current_user), notice: 'このページにはアクセスできません' }
+            end
         end
     end
 end
