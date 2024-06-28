@@ -21,6 +21,10 @@ class Post < ApplicationRecord
     scope :draft, -> { where(is_display: "draft") }
     scope :unpublished, -> { where(is_display: "unpublished") }
     
+    scope :latest, -> {order(created_at: :desc)}
+    scope :old, -> {order(created_at: :asc)}
+    # 笑った多い順とランダム追加
+    
     def get_image(width, height)
         image.variant(gravity: :center, resize: "#{width}x#{height}", crop: "#{width}x#{height}+0+0").processed
     end
