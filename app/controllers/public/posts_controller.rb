@@ -44,10 +44,31 @@ class Public::PostsController < ApplicationController
     def index
         respond_to do |format|
             format.html do
-                @posts = Post.page(params[:page])
+                # @posts = Post.page(params[:page])
+                if params[:latest]
+                    @posts = Post.latest.page(params[:page])
+                elsif params[:old]
+                    @posts = Post.old.page(params[:page])
+                elsif params[:random]
+                    @posts = Post.random.page(params[:page])
+                elsif params[:laughed_count]
+                    @posts = Post.laughed_count.page(params[:page])
+                else
+                    @posts = Post.published.order(created_at: :desc).page(params[:page])
+                end
             end
             format.json do
-                @posts = Post.all
+                if params[:latest]
+                    @posts = Post.latest
+                elsif params[:old]
+                    @posts = Post.old
+                elsif params[:random]
+                    @posts = Post.random
+                elsif params[:laughed_count]
+                    @posts = Post.laughed_count
+                else
+                    @posts = Post.all
+                end
             end
         end
         @published_posts = Post.published.order(created_at: :desc).page(params[:page])

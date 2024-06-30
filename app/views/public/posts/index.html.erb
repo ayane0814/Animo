@@ -1,11 +1,17 @@
 <div class="container-fluid">
     <h2>投稿一覧</h2>
+    <p>
+        <%= link_to '新しい順', posts_path(latest: true) %>
+        <%= link_to '古い順', posts_path(old: true) %>
+        <%= link_to 'ランダム', posts_path(random: true) %>
+        <%= link_to '笑った人が多い順', posts_path(laughed_count: true) %>
+    </p>
     <div class="row">
-        <% @published_posts.each do |post| %>
+        <% @posts.each do |post| %>
             <%= render "index", post: post %>
         <% end %>
     </div>
 </div>
 <div class="d-flex justify-content-center">
-    <%= paginate @published_posts %>
+    <%= paginate @posts %>
 </div>

@@ -23,7 +23,13 @@ class Post < ApplicationRecord
     
     scope :latest, -> {order(created_at: :desc)}
     scope :old, -> {order(created_at: :asc)}
-    # 笑った多い順とランダム追加
+    scope :random, -> {order('RANDOM()')}
+    scope :laughed_count, -> {
+        left_joins(:laughed_buttons)
+            .select('posts.*, COUNT(laughed_buttons.id) AS laughed_count')
+            .group('posts.id')
+            .order('laughed_count DESC')
+    }
     
     def get_image(width, height)
         image.variant(gravity: :center, resize: "#{width}x#{height}", crop: "#{width}x#{height}+0+0").processed
