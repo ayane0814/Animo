@@ -1,10 +1,13 @@
 <div class="container-fluid">
     <h2>投稿一覧</h2>
     <p>
-        <%= link_to '新しい順', posts_path(latest: true) %>
-        <%= link_to '古い順', posts_path(old: true) %>
-        <%= link_to 'ランダム', posts_path(random: true) %>
-        <%= link_to '笑った人が多い順', posts_path(laughed_count: true) %>
+        <%= link_to '新しい順', posts_path(latest: true), class: "text-success" %>
+        |
+        <%= link_to '古い順', posts_path(old: true), class: "text-success" %>
+        |
+        <%= link_to 'ランダム', posts_path(random: true), class: "text-success"%>
+        |
+        <%= link_to '笑った人が多い順', posts_path(laughed_count: true), class: "text-success" %>
     </p>
     <div class="row">
         <% @posts.each do |post| %>
