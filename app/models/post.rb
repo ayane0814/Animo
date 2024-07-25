@@ -23,7 +23,6 @@ class Post < ApplicationRecord
     
     scope :latest, -> {order(created_at: :desc)}
     scope :old, -> {order(created_at: :asc)}
-    scope :random, -> {order('RANDOM()')}
     scope :laughed_count, -> {
         left_joins(:laughed_buttons)
             .select('posts.*, COUNT(laughed_buttons.id) AS laughed_count')

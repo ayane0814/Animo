@@ -49,8 +49,6 @@ class Public::PostsController < ApplicationController
                     @posts = Post.latest.page(params[:page])
                 elsif params[:old]
                     @posts = Post.old.page(params[:page])
-                elsif params[:random]
-                    @posts = Post.random.page(params[:page])
                 elsif params[:laughed_count]
                     @posts = Post.laughed_count.page(params[:page])
                 else
@@ -62,8 +60,6 @@ class Public::PostsController < ApplicationController
                     @posts = Post.latest
                 elsif params[:old]
                     @posts = Post.old
-                elsif params[:random]
-                    @posts = Post.random
                 elsif params[:laughed_count]
                     @posts = Post.laughed_count
                 else
